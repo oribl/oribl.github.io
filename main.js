@@ -1,12 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const mouseCircle = document.getElementById("mouseCircle");
+const cursorSmall = document.querySelector('.small');
+const cursorBig = document.querySelector('.big');
+
+
+const positionElement = (e)=> {
+  const mouseY = e.clientY;
+  const mouseX = e.clientX;
+   
+  cursorSmall.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
   
-    document.addEventListener("mousemove", (event) => {
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
-  
-      mouseCircle.style.left = mouseX + "px";
-      mouseCircle.style.top = mouseY + "px";
-    });
-  });
-  
+  cursorBig.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+ 
+}
+
+window.addEventListener('mousemove', positionElement)
