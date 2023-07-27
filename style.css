@@ -36,8 +36,4 @@ body{
                 background-color: orange;
             }
   
-            100% {
-                //transform: scale(2.0);
-                background-color: red;
-            }
         }
