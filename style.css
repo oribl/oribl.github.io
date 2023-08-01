@@ -2,9 +2,32 @@
 body {
   background-color: #ffffff; /* White background */
   cursor: none; /* Hide the default cursor */
-  height: 120vh; /* Set the height of the body to 120% of the viewport height */
-}
 
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+  align-items: normal;
+  margin: 0 auto;
+  font: 500 100%/1.5 system-ui;
+  
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 650px) {
+  body {
+    display: block;
+    font-size: 80%;
+  }
+  p {
+    position: relative;
+    margin: -3rem 0 2rem 1rem;
+    padding: 1rem;
+    background: rgba(white, 0.8);
+  }
+}
 /* Small black circle cursor */
 .small {
   width: 30px;
@@ -12,31 +35,4 @@ body {
   background-color: rgba(0, 0, 0, 0.489); /* White background */
   border-radius: 50%; /* Make it a circle */
   
-}
-
-/* Large white circle cursor with animation */
-.big {
-  width: 50px;
-  height: 50px;
-  background-color: white; /* White background */
-  border-radius: 50%; /* Make it a circle */
-  margin-bottom: 20rem; /* Add spacing below the cursor */
-  animation-name: stretch; /* Name of the animation */
-  animation-duration: 2.0s; /* Duration of the animation */
-  animation-timing-function: ease-out; /* Animation timing function */
-  animation-direction: alternate; /* Animation direction (alternate back and forth) */
-  animation-iteration-count: infinite; /* Repeat the animation indefinitely */
-  animation-play-state: running; /* Set the initial animation state as running */
-}
-
-/* Keyframes for the animation */
-@keyframes stretch {
-  0% {
-    opacity: 0.2; /* Initial opacity */
-    background-color: green; /* Green background color */
-    border-radius: 100%; /* Make it a perfect circle */
-  }
-  50% {
-    background-color: orange; /* Change the background color to orange at 50% of the animation */
-  }
 }
