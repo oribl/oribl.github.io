@@ -9,7 +9,7 @@ body {
   gap: 1rem;
   align-items: normal;
   margin: 0 auto;
-  font: 500 100%/1.5 system-ui;
+  font-family: 'Raleway', sans-serif;
   
 }
 img {
