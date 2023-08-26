@@ -1,19 +1,17 @@
-// Select the small and big cursor elements
 const cursorSmall = document.querySelector('.small');
-const cursorBig = document.querySelector('.big');
+const cursorSize = 60; // Adjust this value based on your cursor size - twice the size will make the cursor point in be in the middle of the circle
 
-// Function to update the position of the custom cursors based on mouse movement
 const positionElement = (e) => {
-  // Get the Y and X coordinates of the mouse cursor
-  const mouseY = e.clientY;
-  const mouseX = e.clientX;
-   
-  // Move the small cursor to the current mouse position
-  cursorSmall.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-  
-  // Move the big cursor to the current mouse position
-  cursorBig.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  const mouseY = e.clientY + window.scrollY;
+  const mouseX = e.clientX + window.scrollX;
+
+  cursorSmall.style.transform = `translate3d(${mouseX - cursorSize / 2}px, ${mouseY - cursorSize / 2}px, 0)`;
+
+  if (e.target.tagName === 'IMG') {
+    cursorSmall.style.backgroundColor = 'rgba(255, 162, 0, 0.489)';
+  } else {
+    cursorSmall.style.backgroundColor = 'rgba(0, 0, 0, 0.489)';
+  }
 }
 
-// Add an event listener to detect mouse movement on the window
 window.addEventListener('mousemove', positionElement);

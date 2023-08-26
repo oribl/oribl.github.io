@@ -1,38 +1,124 @@
+
+
 /* Style the appearance of the webpage */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
 body {
   background-color: #ffffff; /* White background */
   cursor: none; /* Hide the default cursor */
 
   display: grid;
   padding: 2rem;
-  grid-template-columns: 300px 1fr;
+  /*grid-template-columns: 300px 1fr;*/
   gap: 1rem;
   align-items: normal;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
-  
 }
-img {
-  max-width: 100%;
-  height: auto;
-}
-@media (max-width: 650px) {
-  body {
-    display: block;
-    font-size: 80%;
-  }
-  p {
-    position: relative;
-    margin: -3rem 0 2rem 1rem;
-    padding: 1rem;
-    background: rgba(white, 0.8);
-  }
-}
+
 /* Small black circle cursor */
 .small {
   width: 30px;
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.489); /* White background */
-  border-radius: 50%; /* Make it a circle */
+  background-color: rgba(0, 0, 0, 0.489);
+  border-radius: 1000%;
+  position: absolute;
+  pointer-events: none; /* Prevent cursor from interfering with interactions */
+  z-index: 9999; /* Ensure the cursor is on top of other elements */
+  /* Add any other custom styles you need for the cursor */
+}
+
+
+
+
+header {
+  background-color: #fff;
+  color: #fff;
+  padding: 10px;
   
 }
+
+header nav ul {
+  
+  list-style: none;
+  display: flex;
+}
+
+header nav li {
+  
+  margin-right: 20px;
+}
+
+header nav li:last-child {
+  margin-right: 0;
+}
+
+header nav a {
+  color: #000000;
+  text-decoration: none;
+  padding: 5px;
+}
+
+header nav a:hover {
+  background-color: #ff983862;
+  cursor: none;
+}
+
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+ 
+  gap: 10px;
+  padding: 0 200px; /* Add left and right padding here */
+ 
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  overflow: hidden;
+  width: 80%; /* Set the desired width for the container */
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%; /* Make sure the image doesn't exceed the container's width */
+  height: auto; /* Maintain the image's aspect ratio */
+}
+
+/* Style the image labels */
+.image-label {
+  display: none; /* Initially hide the labels */
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  position: absolute; /* Position the label absolutely */
+  bottom: 0; /* Position the label at the bottom */
+  left: 50%; /* Horizontally center the label */
+  transform: translateX(-50%); /* Adjust to horizontally center the label */
+  background-color: rgba(255, 255, 255, 0.9); /* Add a background color for better visibility */
+  padding: 5px 10px; /* Add padding to the label */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Show the label when the cursor hovers over the grid item */
+.grid-item:hover .image-label {
+  display: block;
+}
+
+
+footer {
+  background-color: #ffffff;
+  color: #ffbb00;
+  text-align: right;
+  padding: 10px;
+}
+
