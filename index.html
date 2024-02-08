@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-  
-  
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-  
-  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Website</title>
   <link rel="stylesheet" href="style.css">
-  
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
 </head>
 
 <body>
@@ -21,44 +15,30 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <!-- Change the href value to the name of your projects page -->
+        <li><a href="projects.html">Projects</a></li>
       </ul>
     </nav>
   </header>
-  <!-- Two custom cursor elements -->
+
   <main>
-    <div class="grid-container">
-      <div class="grid-item">
-        <img src="./IMG_0076.jpg" alt="Image 1" >
-        <div class="image-label">Image 1</div>
-      </div>
-      <div class="grid-item">
-        <img src="./Gizmo_orange.png" alt="Image 2">
-        <div class="image-label">ObsCura</div>
-      </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
-        <div class="image-label">Image 1</div>
-      </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
-        <div class="image-label">Image 1</div>
-      </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
-        <div class="image-label">Image 1</div>
-      </div>
-      <!-- Add more grid items for a total of 9 images -->
-    </div>
-
+    <section id="home">
+      
+      <!-- This is the dynamic text that changes -->
+      <div id="dynamicText" class="typing"></div>
+      <button class="round-button" onclick="changeText()"></button>
+    </section>
   </main>
+
   <footer>
-    <p>&copy; 2023 My Website. All rights reserved.</p>
+    <p>&copy; 2024 My Website. All rights reserved.</p>
   </footer>
+
   <div class="cursor small"></div>
-  <!-- Link to an external JavaScript file -->
+
   <script src="main.js"></script>
+  <script src="text.js"></script>
+  
+  
 </body>
-
-
 </html>
