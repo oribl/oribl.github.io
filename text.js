@@ -1,4 +1,3 @@
-
 var timeoutID; // Variable to store the timeout ID
 
 // Array of different text options
@@ -72,9 +71,5 @@ function typingAnimation(text, index) {
 
 // Call the function initially to set the initial text
 changeText();
+document.body.style.overflow = 'hidden';
 
-// Event listener for the button click
-document.getElementById("yourButtonId").addEventListener("click", function () {
-    // Call the function to change the text when the button is clicked
-    changeText();
-});

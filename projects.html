@@ -9,8 +9,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title>Ori Blich</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+
   
   
 </head>
@@ -20,45 +22,53 @@
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="#">Projects</a></li>
       </ul>
     </nav>
   </header>
-  <!-- Two custom cursor elements -->
+ 
   <main>
     <div class="grid-container">
-      <div class="grid-item">
-        <img src="./IMG_0076.jpg" alt="Image 1" >
+      <div class="grid-item image-container">
+        <img src="Cadmanship_pixel.png" alt="Image 1" >
         <div class="image-label">Image 1</div>
       </div>
-      <div class="grid-item">
-        <img src="./Gizmo_orange.png" alt="Image 2">
+      <div class="grid-item image-container">
+        <img src="./Gizmo_orange_pixel.png" alt="Image 2">
         <div class="image-label">ObsCura</div>
       </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
+      <div class="grid-item image-container">
+        <img src="./cake_mold_pixel.png" alt="Image 3">
         <div class="image-label">Image 1</div>
       </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
+      <div class="grid-item image-container">
+        <img src="./squiB_pixel.jpg" alt="Image 3">
         <div class="image-label">Image 1</div>
       </div>
-      <div class="grid-item">
-        <img src="./0001_3.gif" alt="Image 3">
+      <div class="grid-item image-container">
+        <img src="IMG_0076_pixelate.jpg" alt="Image 3">
+        <div class="image-label">Image 1</div>
+      </div>
+      <div class="grid-item image-container">
+        <img src="Asset 11@300x_pixelate.jpg" alt="Image 3">
         <div class="image-label">Image 1</div>
       </div>
       <!-- Add more grid items for a total of 9 images -->
     </div>
-
+    
   </main>
   <footer>
     <p>&copy; 2024 My Website. All rights reserved.</p>
   </footer>
   <div class="cursor small"></div>
-  <!-- Link to an external JavaScript file -->
-  <div class="overlay"></div>
+
+  <!--<div class="overlay"></div>-->
   <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="sketch.js" defer></script> <!-- Load the separate JavaScript file -->
+
+  
 </body>
 
 

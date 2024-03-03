@@ -1,5 +1,6 @@
 const cursorSmall = document.querySelector('.small');
 const cursorSize = 60; // Adjust this value based on your cursor size - twice the size will make the cursor point in be in the middle of the circle
+//document.body.style.overflow = 'hidden';
 
 const positionElement = (e) => {
   const mouseY = e.clientY + window.scrollY;
@@ -15,3 +16,5 @@ const positionElement = (e) => {
 }
 
 window.addEventListener('mousemove', positionElement);
+
+
