@@ -5,6 +5,27 @@ const renderer = new THREE.WebGLRenderer();
 const modelContainer = document.getElementById('model-container');
 modelContainer.appendChild(renderer.domElement);
 renderer.setSize(modelContainer.offsetWidth, modelContainer.offsetHeight);
+
+// Add loading manager
+const loadingManager = new THREE.LoadingManager();
+const progressBar = document.createElement('div');
+progressBar.classList.add('progress-bar');
+modelContainer.appendChild(progressBar);
+
+// Function to update the progress bar
+loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
+    const progress = (itemsLoaded / itemsTotal) * 100;
+    progressBar.style.width = `${progress}%`;
+};
+
+// Function to handle loading completion
+loadingManager.onLoad = () => {
+    // Hide the progress bar after the model is fully loaded
+    progressBar.style.display = 'none';
+    // Start the animation loop
+    animate();
+};
+
 // Optionally, set the position of the canvas element
 renderer.domElement.style.position = 'absolute';
 renderer.domElement.style.top = '10%';

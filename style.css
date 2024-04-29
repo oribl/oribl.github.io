@@ -20,8 +20,10 @@ body {
   align-items: normal;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
+  font-weight: light;
   overflow-x: hidden; /* Hide the scrollbar */
 }
+
 
 /* Small black circle cursor */
 .small {
@@ -105,7 +107,7 @@ header nav a {
 }
 
 header nav a:hover {
-  background-color: orange;;
+  background-color: orange;
   cursor: none;
 }
 
@@ -284,5 +286,58 @@ footer {
     height: 10%; /* Adjust the height for mobile */
   }
 }
+
+.progress-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0%;
+  height: 4px;
+  background-color: #004a75;
+  transition: width 0.5s ease;
+}
+
+table{
+  border-collapse: separate;  /* Ensures separate borders for spacing */
+  border-spacing: 20px 25px; 
+}
+
+/* Target the table cells containing project names (td) */
+td {
+
+  /* Adjust font properties */
+  /*font-family: Arial, sans-serif;   Change font family to your preference */
+  font-size: 200%;                 /* Modify font size as desired */
+  
+
+  /* Control spacing around the text */
+  padding: 15px 0px;            /* Adjust padding for top/bottom and left/right */
+
+  /* Control spacing between table cells */
+  margin-bottom: 15px;            /* Add space between rows (optional) */
+}
+
+/* Add styles for the table cell hover effect */
+td.hoverable:hover {
+  /*background-color: orange;  Set the background color to orange on hover */
+  cursor: none; /* Change cursor to pointer on hover */
+  padding: 5px; /* Adjust padding to control the size of the orange background */
+  display: inline-block; /* Make the table cell behave like a block element */
+  width: auto; /* Allow the width to adjust based on content */
+}
+
+.image-overlay {
+  position: fixed;
+  top: 50%; /* Position the overlay 50% down from the top */
+  left: 50%; /* Position the overlay 50% from the left */
+  transform: translate(-50%, -50%); /* Move the overlay back by half of its own width and height */
+  width: auto; /* Set the width of the overlay */
+  height: 50%; /* Auto-adjust the height to maintain aspect ratio */
+  z-index: 997; /* Ensure the overlay is on top of other content */
+}
+
+
+
 
 
