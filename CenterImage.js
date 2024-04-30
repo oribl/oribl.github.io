@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Calculate new dimensions while keeping the aspect ratio
                     if (aspectRatio >= 1) {
-                        newWidth = 100;
+                        newWidth = 1;
                         newHeight = newWidth / aspectRatio;
                     } else {
-                        newHeight = 100;
+                        newHeight = 1;
                         newWidth = newHeight * aspectRatio;
                     }
 

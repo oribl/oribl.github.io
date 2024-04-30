@@ -25,6 +25,8 @@ body {
 }
 
 
+
+
 /* Small black circle cursor */
 .small {
   
@@ -301,6 +303,7 @@ footer {
 table{
   border-collapse: separate;  /* Ensures separate borders for spacing */
   border-spacing: 20px 25px; 
+  
 }
 
 /* Target the table cells containing project names (td) */
@@ -327,6 +330,24 @@ td.hoverable:hover {
   width: auto; /* Allow the width to adjust based on content */
 }
 
+@media (max-width: 600px) {
+  table {
+    border-spacing: 0px 20px; /* Decrease border spacing for mobile */
+  }
+
+  td {
+    font-size: 150%; /* Decrease font size for mobile */
+    padding: 15px 0px; /* Adjust padding for top/bottom and left/right */
+    margin-bottom: 10px; /* Decrease space between rows */
+    margin-left: 0; /* Remove left margin */
+    padding-left: 0;
+  }
+
+  td.hoverable:hover {
+    padding: 0; /* Decrease padding for hover effect */
+  }
+}
+
 .image-overlay {
   position: fixed;
   top: 50%; /* Position the overlay 50% down from the top */
@@ -337,7 +358,9 @@ td.hoverable:hover {
   z-index: 997; /* Ensure the overlay is on top of other content */
 }
 
-
-
-
+/* For Firefox */
+* {
+  scrollbar-width: auto; /* "auto" or "thin" */
+  scrollbar-color: orange #2e333b2c; /* Thumb color and track color */
+}
 
