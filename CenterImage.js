@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     img.height = newHeight;
                 } else {
                     // Otherwise, set a maximum size of 700x700 pixels
-                    const maxImageWidth = 500;
-                    const maxImageHeight = 500;
+                    const maxImageWidth = 700;
+                    const maxImageHeight = 700;
 
                     // Check if image width or height exceeds the maximum limits
                     if (img.width > maxImageWidth || img.height > maxImageHeight) {

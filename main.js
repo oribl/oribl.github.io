@@ -17,4 +17,27 @@ const positionElement = (e) => {
 
 window.addEventListener('mousemove', positionElement);
 
+  // Get the button
+  let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+  // Show the button when scrolling down 20px from the top
+  window.onscroll = function() {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 350))  {
+      scrollToTopBtn.style.display = "block";
+    } else {
+      scrollToTopBtn.style.display = "none";
+    }
+  }
+
+  // Scroll to the top when the button is clicked
+  scrollToTopBtn.onclick = function() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 

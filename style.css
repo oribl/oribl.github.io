@@ -20,8 +20,8 @@ body {
   align-items: normal;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
-  font-weight: light;
   overflow-x: hidden; /* Hide the scrollbar */
+  
 }
 
 
@@ -181,10 +181,10 @@ footer {
   color: rgb(255, 255, 255);;
   text-align: right;
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 1%;
-  
+  z-index: 900;
 }
 
 /* Add styles for the dynamic text */
@@ -251,6 +251,13 @@ footer {
 .round-button:hover {
   filter: invert(70%);
   opacity: 0.8;
+}
+/* Override hover effect for mobile devices */
+@media only screen and (max-width: 600px) {
+  .round-button:hover {
+    filter: none; /* Remove hover effect on mobile devices */
+    opacity: 1; /* Ensure full opacity on mobile devices */
+  }
 }
 
 #text-container {
@@ -354,13 +361,123 @@ td.hoverable:hover {
   left: 50%; /* Position the overlay 50% from the left */
   transform: translate(-50%, -50%); /* Move the overlay back by half of its own width and height */
   width: auto; /* Set the width of the overlay */
-  height: 50%; /* Auto-adjust the height to maintain aspect ratio */
+  height: 70%; /* Auto-adjust the height to maintain aspect ratio */
   z-index: 997; /* Ensure the overlay is on top of other content */
+  
+  
 }
 
 /* For Firefox */
 * {
   scrollbar-width: auto; /* "auto" or "thin" */
   scrollbar-color: orange #2e333b2c; /* Thumb color and track color */
+  
 }
 
+/* Define styles for anchor tags */
+a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Change text color */
+  cursor: none;
+}
+
+/* Style for the container */
+.container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+/* Style for the text section */
+.text-section {
+  /* Occupy remaining space */
+  
+  padding: 20px; /* Add some padding */
+  width: 35%;
+  margin-right: 170px;
+}
+
+/* Style for the image section */
+.image-section {
+   /* Occupy remaining space */
+  padding: 20px; /* Add some padding */
+  z-index: 999;
+  
+  
+}
+
+      /* Responsive styling */
+      @media (max-width: 768px) {
+        .container {
+            flex-direction: column; /* Change to column layout on smaller screens */
+        }
+        .text-section, .image-section {
+            flex: none; /* Reset flex property to default */
+        }
+    }
+
+.image-section img {
+  display: block;
+  width: 500px; /* Set the width to your desired value */
+  height: auto; /* Maintain the image's aspect ratio */
+  margin-bottom: 20px; /* Add margin between images if needed */
+}
+    
+
+/* Add space between h2 and p */
+.text-section h3 {
+  margin-bottom: 10px; /* Adjust margin bottom as needed */
+  font-size: 20px; /* Set the font size */
+  font-family: 'Poppins', sans-serif; /* Set the font family */
+  font-weight: lighter;
+  color: rgb(89, 89, 89);
+}
+
+/* Add space between h2 and p */
+.text-section h2 {
+  margin-bottom: 10px; /* Adjust margin bottom as needed */
+  font-size: 30px; /* Set the font size */
+  font-family: 'Poppins', sans-serif; /* Set the font family */
+  font-weight: 600;
+}
+
+/* Add space between h2 and p */
+.text-section h1 {
+  margin-bottom: 10px; /* Adjust margin bottom as needed */
+  font-size: 20px; /* Set the font size */
+  font-family: 'Poppins', sans-serif; /* Set the font family */
+  font-weight: 600;
+}
+
+.primary-link {
+  color: orange;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+  display: inline-block; /* Keeps the element inline but allows padding */
+  width: fit-content; /* Adjust the width as needed */
+  margin: -10px; /* Offset the padding to maintain the original layout */  
+}
+
+/* Scroll to Top Button Styles */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: none;
+  text-align: center;
+  font-size: 24px;
+  line-height: 40px;
+  z-index: 990;
+  display: none; /* Hidden by default */
+}
+
+.scroll-to-top:hover {
+  background-color: #e69500; /* Slightly darker orange on hover */
+}

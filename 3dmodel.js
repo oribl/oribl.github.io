@@ -57,7 +57,7 @@ loader.load('me_1.glb', function (gltf) {
         if (object.isMesh) {
             // Set gray material for the object
             object.material = new THREE.MeshStandardMaterial({ color: 0x004a75,  transparent: true, // Enable transparency
-            opacity: 0.9,  wireframe: true });
+            opacity: 1,  wireframe: true });
         }
     });
 
