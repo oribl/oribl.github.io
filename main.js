@@ -13,31 +13,33 @@ const positionElement = (e) => {
   } else {
     cursorSmall.style.backgroundColor = 'rgba(0, 0, 0, 0.489)';
   }
-}
+};
 
 window.addEventListener('mousemove', positionElement);
 
-  // Get the button
-  let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+// Get the button
+let scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
-  // Show the button when scrolling down 20px from the top
-  window.onscroll = function() {
-    scrollFunction();
-  };
+// Show the button when scrolling down to 5% from the bottom
+window.onscroll = function() {
+  scrollFunction();
+};
 
-  function scrollFunction() {
-    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 350))  {
-      scrollToTopBtn.style.display = "block";
-    } else {
-      scrollToTopBtn.style.display = "none";
-    }
+function scrollFunction() {
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolledPercentage = (window.scrollY / scrollableHeight) * 100;
+
+  if (scrolledPercentage >= 90) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
   }
+}
 
-  // Scroll to the top when the button is clicked
-  scrollToTopBtn.onclick = function() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-
+// Scroll to the top when the button is clicked
+scrollToTopBtn.onclick = function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+};
