@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  
+  
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>obscura</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  
+  
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <main>
+    <div class="container">
+
+      <div class="text-section">
+          <h2>obscura</h2>
+          <h3>2022</h3>
+          <p>A collaboration with Eden Harrison - Gizmo course Imperial College - Royal College of Arts.</p>
+          <p>This project explores the awkwardness that is the result of direct eye contact in public transportation. We developed glasses that detect the surrounding gaze direction and help the user to avoid direct eye contact.
+            You can find a short clip <a href="https://youtu.be/ROJh54tEHyk?si=3ku94KEo8U9OrUlm" target="_blank" rel="noopener noreferrer" class="primary-link">here</a>.</p>
+        </p>
+      </div>
+
+      <div class="image-section">
+        <img src="./obscura/232597854_12b426be01_o.png">
+        <img src="./obscura/Picture1-light.gif">
+    </div>
+  </div>
+  
+  <div class="container">
+
+      <div class="text-section">
+        <h1>parts:</h1>
+        <p class="spaced-paragraph">A. Switch: If on, the wings (D) will activate when someone’s gaze is directed at the camera (F) (in addition to the vibration motors (B) being active), avoiding the risk of eye contact. If off, only the vibration motors are active.</p>
+        <p class="spaced-paragraph">B. Vibration motors and clip: the clip holds the vibration motors in place.</p>
+        <p class="spaced-paragraph">C. Wings: these descend to prevent eye contact.</p>
+        <p class="spaced-paragraph">D. Servo motor: rotates to activate shades.</p>
+        <p class="spaced-paragraph">E. Camera. Sends a visual feed to the raspberry pi, for gaze detection.</p>
+        <p class="spaced-paragraph">F. Photoresistor. This feeds the light level back to the Arduino, and from there to the raspberry pi, in order to set the correct threshold for iris detection.</p>
+        <p class="spaced-paragraph">G. PCB board. This routes all voltage, ground, and signal cables to the arduino, for more efficient connections.</p>
+        <p class="spaced-paragraph">H. Arduino. This controls the shades/vibration motors in response to received commands from the raspberry pi. </p>
+    </div>
+      <div class="image-section">
+        <img src="./obscura/blue print-01.png" alt="Image">
+    </div>
+  </div>
+
+  <div class="container">
+  <div class="text-section">
+    <h1>design intent and function</h1>
+    <p>Function A:</p>
+        <p class="spaced-paragraph">If the perpetrator is located on the left-hand  or right-hand side of the frame, the vibrating motor will buzz on the left or right, alerting the wearer to the attempt to make eye contact.
+        The wearer may now use this information as they wish, to either avoid or engage with eye contact.</p>
+        
+
+        <p>Function B:</p>
+        If the perpetrator is located on the middle of the frame — and the ‘hide’ function of the glasses is engaged (accessed via the switch, see page 3) — the wings descend, obscuring direct eye contact from being made. The wings will lift after a pre-determined period of time (4 s).
+If the ‘hide’ function is not engaged, then nothing will happen.</p>
+        </div>
+    <div class="image-section">
+        <img src="./obscura/Picture2.jpg" alt="Image 2">
+        <img src="./obscura/Picture3.jpg" alt="Image 2">
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-section">
+      <h1>functionality</h1>
+    <p>face detection:</p>
+
+      <p class="spaced-paragraph">  A pre-trained face detector is used to locate each face in the frame. The detector locates 68 landmarks to describe each face.</p>
+    </div>
+      <div class="image-section">
+          <img src="./obscura/face_detection_light.gif" alt="Image 2">
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="text-section">
+    <p>iris detection:</p>
+      <p class="spaced-paragraph">  For each face, the eyes are extracted by taking the relevant landmarks. The iris of each eye is detected by applying contour detection to the binary image of the eye (i.e., a gray scale image that has been converted to a binary image via thresholding). An ellipse is fitted to the contour of the iris to give the centre of the iris. The midpoint between each iris is calculated and a vector is drawn from a reference landmark (tip of the nose) to this midpoint for later use.</p>
+    </div>
+      <div class="image-section">
+          <img src="./obscura/iris_detection_light.gif" alt="Image 2">
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="text-section">
+    <p>head pose estimation:</p>
+      <p class="spaced-paragraph">  The head pose is estimated by mapping each of the 68 landmarks to the relevant 3D coordinates, taken from a 3D model of an average head. This allows the rotation and translation vector to be calculated via perspective n-point, i.e., using the camera image to estimate the position of a camera via a set of 3D coordinates, their reference 2D coordinates in the camera image, and a matrix of the camera’s intrinsic features.</p>
+    </div>
+      <div class="image-section">
+          <img src="./obscura/head_pose_estimation_light.gif" alt="Image 2">
+      </div>
+  </div>
+
+  <div class="container">
+    <div class="text-section">
+      <h1>pipeline</h1>
+      <p>machine learning:</p>
+          <p class="spaced-paragraph">The iris midpoint vector, head rotation vector, and head translation vector are collected into a single vector, and used to classify the gaze as either directed toward camera’ or ‘not directed toward camera’ via SVM.</p>
+          <pclass="spaced-paragraph">SVM:</p>
+        <p class="spaced-paragraph">  An SVM training method creates a model that classifies samples based on training data that has been labelled as belonging to one of two categories (‘looking at the camera’ and ‘not looking at the camera’). SVM maps the training data to points in space to maximize the width of the gap between the two categories. New examples are then mapped into that same space and predicted to belong to a category, based on which side of the gap they fall. A training data set of captured images was created and analyzed
+        to extract the features, which were then used to train the SVM classifier. The classifier was exported as a ‘pickled’ object (i.e., a stream of bytes); this can then be run in the main block of code, and used to classify every face captured in real-time by the raspberry pi camera.</p>
+        <p >architecture:</p>
+        Output from raspberry pi travels to Arduino via serial communication.
+        Arduino receives commands from the raspberry pi and conducts a corresponding action.</p>
+
+          </div>
+      <div class="image-section">
+          <img src="./obscura/Architecture.png" alt="Image 2">
+          <img src="./obscura/IMG_9105.jpg" alt="Image 2">
+      </div>
+  </div>
+    
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top"></button>
+  <script src="loader.js"></script>
+  </main>
+  <footer>
+    <p>&copy; 2024 My Website. All rights reserved.</p>
+  </footer>
+  <div class="cursor small"></div>
+
+  
+
+
+
+  <!--<div class="overlay"></div>-->
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="CenterImage.js"></script>
+  
+ 
+
+  
+</body>
+
+
+</html>

@@ -486,6 +486,10 @@ a {
 
 .scroll-to-top:hover {
   filter: invert(70%); /* Slightly darker orange on hover */
+  @media only screen and (max-width: 600px) {
+      filter: none; /* Remove hover effect on mobile devices */
+      opacity: 1; /* Ensure full opacity on mobile devices */
+    }
   
 }
 
