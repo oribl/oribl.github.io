@@ -43,3 +43,14 @@ scrollToTopBtn.onclick = function() {
     behavior: "smooth"
   });
 };
+
+// Get all the clickable images
+const clickableImages = document.querySelectorAll('.clickable-image');
+
+// Add event listener to each image
+clickableImages.forEach(img => {
+  img.addEventListener('click', () => {
+    // Toggle the 'enlarged' class on the clicked image
+    img.classList.toggle('enlarged');
+  });
+});
