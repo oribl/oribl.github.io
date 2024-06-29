@@ -80,6 +80,6 @@ def process_image(image_path, output_path):
         dithered_image.save(output_path)
 
 if __name__ == "__main__":
-    input_path = 'dither_Simulathe.gif'  # Change to your input file
-    output_path = 'dither_Simulathe_v8.gif'  # Change to your desired output file
+    input_path = 'dither_lungs.gif'  # Change to your input file
+    output_path = 'dither_lungs_v8.gif'  # Change to your desired output file
     process_image(input_path, output_path)
