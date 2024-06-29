@@ -35,7 +35,7 @@ def convert_to_two_colors(image, colors):
 
 def process_image(image_path, output_path):
     colors = [255, 0]  # Using grayscale for error diffusion
-    color_map = ['#FFFEDB', '#303001']
+    color_map = ['#303001','#FFFEDB']
 
     image = Image.open(image_path)
 
@@ -55,6 +55,6 @@ def process_image(image_path, output_path):
         dithered_image.save(output_path)
 
 if __name__ == "__main__":
-    input_path = 'Picture1.gif'  # Change to your input file
-    output_path = 'obscura_dither_1.gif'  # Change to your desired output file
+    input_path = 'Cadmanship.png'  # Change to your input file
+    output_path = 'Cadmanship_dither_pv1.png'  # Change to your desired output file
     process_image(input_path, output_path)

@@ -58,7 +58,7 @@ def convert_to_two_colors(image, colors):
 
 def process_image(image_path, output_path):
     colors = [255, 0]  # Using grayscale for error diffusion
-    color_map = ['#FFFEDB', '#303001']
+    color_map = ['#303001', '#FFFEDB']
 
     image = Image.open(image_path)
     has_alpha = image.mode in ('RGBA', 'LA')
@@ -80,6 +80,6 @@ def process_image(image_path, output_path):
         dithered_image.save(output_path)
 
 if __name__ == "__main__":
-    input_path = 'stul.png'  # Change to your input file
-    output_path = 'stul_dither_v8.png'  # Change to your desired output file
+    input_path = 'dither_Simulathe.gif'  # Change to your input file
+    output_path = 'dither_Simulathe_v8.gif'  # Change to your desired output file
     process_image(input_path, output_path)
