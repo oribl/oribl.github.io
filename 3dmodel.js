@@ -1,7 +1,7 @@
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 const modelContainer = document.getElementById('model-container');
 modelContainer.appendChild(renderer.domElement);
 renderer.setSize(modelContainer.offsetWidth, modelContainer.offsetHeight);
@@ -20,92 +20,103 @@ loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
 
 // Function to handle loading completion
 loadingManager.onLoad = () => {
-    // Hide the progress bar after the model is fully loaded
     progressBar.style.display = 'none';
-    // Start the animation loop
     animate();
 };
 
-// Optionally, set the position of the canvas element
 renderer.domElement.style.position = 'absolute';
 renderer.domElement.style.top = '10%';
 renderer.domElement.style.left = '-5%';
 document.body.appendChild(renderer.domElement);
 
-// Global variables to track mouse position
+// Global variables for mouse interaction
 let mouseX = 0;
 let mouseY = 0;
-
-// Function to handle mouse movement
 function onMouseMove(event) {
-    // Update global mouse position variables
     mouseX = event ? (event.clientX / window.innerWidth) * 2 - 1 : 0;
     mouseY = event ? -(event.clientY / window.innerHeight) * 2 + 1 : 0;
 }
-
-// Add event listener for mouse move
 document.addEventListener('mousemove', onMouseMove, false);
+
+// Variable to store materials
+const originalMaterials = [];
 
 // Load the GLB model
 const loader = new THREE.GLTFLoader();
-loader.load('me_1.glb', function (gltf) {
-    // Add the model to the scene
-    scene.add(gltf.scene);
+loader.load(
+    'me_1.glb',
+    function (gltf) {
+        scene.add(gltf.scene);
 
-    // Adjust material properties of the model
-    gltf.scene.traverse(function (object) {
-        if (object.isMesh) {
-            // Set gray material for the object
-            object.material = new THREE.MeshStandardMaterial({ color: 0x004a75,  transparent: true, // Enable transparency
-            opacity: 1,  wireframe: true });
-        }
-    });
+        // Store references to original materials and customize them
+        gltf.scene.traverse((object) => {
+            if (object.isMesh) {
+                // Customize the existing material
+                object.material.color.set(0x004a75); // Deep blue color
+                object.material.metalness = 0.8;    // Metallic appearance
+                object.material.roughness = 0.3;   // Glossy surface
+                object.material.transparent = true; // Enable transparency
+                object.material.opacity = 0.7;     // Slight transparency
 
-    // Start the animation loop after the model is loaded
-    animate();
-});
+                // Store the original material for future toggling
+                originalMaterials.push(object.material);
+
+                object.material.wireframe = false; // Ensure wireframe is off by default
+            }
+        });
+
+        animate();
+    },
+    undefined,
+    function (error) {
+        console.error('An error occurred while loading the model:', error);
+    }
+);
 
 // Add lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 1); // White ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1); // Sunlight
-directionalLight.position.set(1, 2, 0); // Position the light from the top
-scene.add(directionalLight);
+const directionalLight1 = new THREE.DirectionalLight(0xffffff, 3);
+directionalLight1.position.set(1, 2, 2);
+scene.add(directionalLight1);
 
-// Set background color to white
+const directionalLight2 = new THREE.DirectionalLight(0xffffff, 4);
+directionalLight2.position.set(-1, -1, -2);
+scene.add(directionalLight2);
+
+const pointLight1 = new THREE.PointLight(0xffffff, 0.5, 100);
+pointLight1.position.set(10, 10, 10);
+scene.add(pointLight1);
+
+const pointLight2 = new THREE.PointLight(0xffffff, 0.5, 100);
+pointLight2.position.set(-10, -10, -10);
+scene.add(pointLight2);
+
 scene.background = new THREE.Color(0xffffff);
 
-// Position and rotate the camera around the center
 const radius = 30;
-const cameraAngle = Math.PI / 1; // 45 degrees
+const cameraAngle = Math.PI / 1;
 const cameraX = Math.sin(cameraAngle) * radius;
 const cameraZ = Math.cos(cameraAngle) * radius;
 camera.position.set(cameraX, 10, cameraZ);
-camera.lookAt(0, 0, 0); // Point the camera towards the origin (center) of the scene
+camera.lookAt(0, 0, 0);
 
-// Function to animate the scene
 function animate() {
     requestAnimationFrame(animate);
 
-    // Check if the device width is less than a certain threshold to detect mobile devices
-    const isMobile = window.innerWidth < 768; // Adjust the threshold as needed
+    const isMobile = window.innerWidth < 768;
 
     if (isMobile) {
-        // Rotate the model continuously for mobile devices
         scene.traverse(function (object) {
             if (object.isMesh) {
-                // Rotate the object by a small amount in each frame
-                object.rotation.y += 0.01; // Adjust the rotation speed as needed
+                object.rotation.y += 0.01;
             }
         });
     } else {
-        // Rotate the model based on cursor position for non-mobile devices
-        // Calculate rotation angles based on cursor position
         const rotationAngleX = mouseY * Math.PI / 4;
         const rotationAngleY = mouseX * Math.PI / 4;
 
-        // Rotate the model based on cursor position
         scene.traverse(function (object) {
             if (object.isMesh) {
                 object.rotation.x = rotationAngleX;
@@ -114,36 +125,51 @@ function animate() {
         });
     }
 
-    // Render the scene
     renderer.render(scene, camera);
 
-    // Function to handle resizing of the renderer
-function resizeRenderer() {
-    const width = isMobile ? window.innerWidth : modelContainer.offsetWidth;
-    const height = isMobile ? window.innerHeight : modelContainer.offsetHeight;
-    renderer.setSize(width, height);
-    // Adjust position for mobile devices
-    if (isMobile) {
-        renderer.domElement.style.top = '20px'; // Adjust as needed
-        renderer.domElement.style.left = '20%';
-        renderer.domElement.style.width = '60%';
-        renderer.domElement.style.height = '60%';
-    } else {
-        renderer.domElement.style.top = '20%';
-        renderer.domElement.style.left = '-5%';
+    function resizeRenderer() {
+        const width = isMobile ? window.innerWidth : modelContainer.offsetWidth;
+        const height = isMobile ? window.innerHeight : modelContainer.offsetHeight;
+        renderer.setSize(width, height);
+        if (isMobile) {
+            renderer.domElement.style.top = '20px';
+            renderer.domElement.style.left = '20%';
+            renderer.domElement.style.width = '60%';
+            renderer.domElement.style.height = '60%';
+        } else {
+            renderer.domElement.style.top = '20%';
+            renderer.domElement.style.left = '-5%';
+        }
     }
-}
 
-// Adjust the size of the renderer's canvas element
-resizeRenderer();
-
-// Function to handle window resize events
-function onWindowResize() {
     resizeRenderer();
-    camera.aspect = isMobile ? window.innerWidth / window.innerHeight : modelContainer.offsetWidth / modelContainer.offsetHeight;
-    camera.updateProjectionMatrix();
+
+    function onWindowResize() {
+        resizeRenderer();
+        camera.aspect = isMobile
+            ? window.innerWidth / window.innerHeight
+            : modelContainer.offsetWidth / modelContainer.offsetHeight;
+        camera.updateProjectionMatrix();
+    }
+
+    window.addEventListener('resize', onWindowResize);
 }
 
-// Add event listener for window resize events
-window.addEventListener('resize', onWindowResize);
-}
+// Wireframe toggle functionality
+let isWireframeEnabled = false;
+const wireframeToggleButton = document.getElementById('wireframe-toggle');
+
+wireframeToggleButton.addEventListener('click', () => {
+    isWireframeEnabled = !isWireframeEnabled;
+
+    scene.traverse((object) => {
+        if (object.isMesh) {
+            if (object.material) {
+                object.material.wireframe = isWireframeEnabled; // Toggle wireframe
+            }
+        }
+    });
+
+    // Update button color to reflect the state
+    wireframeToggleButton.style.backgroundColor = isWireframeEnabled;
+});
