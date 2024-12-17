@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  
+  
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carveRL</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="./favicon_1X1.png">
+
+  
+  
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <main>
+    <div class="container">
+
+      <div class="text-section">
+          <h2>carveRL</h2>
+          <h3>2023</h3>
+          <p>Serendipity - the chance of making positive discoveries is much greater in a craftsperson's environment compared to an industrial fabrication setting. However, with the integration of digital fabrication, especially computer-controlled machines in mass production and local artisanal production, we are losing the value of serendipity.</p>
+          <br>  
+          <p>This project explores the potential of integrating machine learning into the fabrication process to enhance serendipity. Instead of explicitly instructing the machine on where, when, and how to move (tool path), we teach it how to operate within a given environment. By doing so, the machine avoids repeating the exact path and gains the ability to make those fortuitous mistakes that can lead to positive discoveries.</p>
+            <br>
+            <p>As a case study, I have chosen to focus on pottery, specifically the creation of patterns on clay objects. Drawing inspiration from Wedgwood Potter's lathe and Mishima (a pattern carving technique), CarveRL is a tool that has learned how to carve clay objects and produce various patterns. When working with CarveRL, makers can not only create different patterns but also embrace the potential for serendipity.</p>
+            <br>
+            <p>CarveRL was developed using reinforcement learning, a technique that enables an agent to learn sequential decision-making through environment interaction.</p>
+      </div>
+
+      <div class="image-section">
+        <img src="./carveRL/carveRL_cover.png" alt="Image 1">
+    </div>
+  </div>
+  
+  <div class="container">
+
+      <div class="text-section">
+        <h1>Ver 1</h1>
+        As an initial stage of the project, I started by training a linear actuator to follow a specific pattern. In this video, you can observe a successfully trained agent avoiding the cylinder and the white balls while also making contact with the black ones. Simultaneously, the physical twin, connected to the digital twin, replicated the movements in the physical space.
+      </div>
+
+      <div class="image-section">
+        <img src="./carveRL/carveRL_ver1_sync.gif" class="clickable-image">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="text-section">
+      <h1>Ver 2</h1>
+      <p>The two-axis carving tool is utilized within a learning environment, employing the reinforcement learning method in the Unity3D ML agents environment. Multiple tools are being trained to avoid collisions with cylinders and white balls, while attempting to make contact with red balls. This approach enables the tool to learn the task without being confined to a specific tool path. Once the agent has acquired proficiency in the task, the creator can modify the ball arrangement according to the desired pattern.</p>
+    </div>
+
+    <div class="image-section">
+      <img src="./carveRL/carveRL_ver2.png" >
+  </div>
+</div>
+  <div class="container">
+
+    <div class="text-section">
+      <h1>Collaboration with Yael</h1>
+      <p>Yael Rosenberg carving patterns in the clay sample – To test the tool's ability to collaborate with a ceramic artist, I had the honor of working with Yael Rosenberg. She created her own patterns by hand, and then programmed the machine to attempt to replicate similar ones. Throughout this process, serendipity occurred, and Yael discovered various pattern opportunities.
+      </p>
+    </div>
+
+    <div class="image-section">
+      <img src="./carveRL/yael_carve.png" alt="Image 2">
+  </div>
+</div>
+<div class="container">
+
+  <div class="text-section">
+    <h1></h1>
+    <p>Some of the patterns that were created using the 2 axis tool</p>
+  </div>
+  <div class="image-section">
+    <img src="./carveRL/carveRL_results.gif" alt="Image 2">
+  </div>
+</div>
+
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="scroll-to-top"></button>
+  <script src="loader.js"></script>
+  </main>
+  <footer>
+    <p>&copy; 2024 My Website. All rights reserved.</p>
+  </footer>
+  <div class="cursor small"></div>
+
+  
+
+
+
+  <!--<div class="overlay"></div>-->
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="CenterImage.js"></script>
+  
+ 
+
+  
+</body>
+
+
+</html>
