@@ -24,6 +24,45 @@ body {
   
 }
 
+p {
+  font-family: 'Merriweather', serif;
+  font-optical-sizing: auto;
+  
+  font-style: normal;
+}
+
+
+
+/* Adjusting text-section for improved readability without border and background */
+.text-section {
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.text-section p {
+  font-size: 18px; /* Increase font size for readability */
+  line-height: 1.5; /* Adjust line spacing for better readability */
+  color: #333; /* Darker text color for contrast */
+}
+
+.text-section h2 {
+  font-size: 24px; /* Ensure the heading stands out */
+  margin-bottom: 10px; /* Add space between heading and text */
+}
+
+.text-section h3 {
+  font-size: 20px; /* Subtitle size */
+  color: #555; /* Slightly lighter than the text color */
+  margin-bottom: 10px; /* Add space below */
+}
+
+#text-container h1 {
+  font-family: 'Raleway', sans-serif; /* Use the Raleway font family */
+  font-weight: 400;
+  font-size: 20px; /* Adjust the font size */
+  line-height: 1.5; /* Adjust spacing for better readability */
+  
+}
+
 
 
 
