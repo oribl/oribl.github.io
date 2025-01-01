@@ -226,7 +226,7 @@ footer {
   z-index: 900;
   @media only screen and (max-width: 600px) {
 
-    z-index: 1;
+    z-index: -900;
   }
 }
 
@@ -589,7 +589,7 @@ a {
     /* Adjust positioning for mobile devices */
     @media only screen and (max-width: 700px) {
       left: -30%; /* Adjust the left position for smaller screens */
-      top: 700%;
+      top: 750%;
 
       text-align: center; /* Center-align the text on smaller screens */
     }

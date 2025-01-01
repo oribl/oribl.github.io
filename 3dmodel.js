@@ -38,6 +38,18 @@ function onMouseMove(event) {
 }
 document.addEventListener('mousemove', onMouseMove, false);
 
+// Add zoom in and out functionality
+function onDocumentMouseWheel(event) {
+    const zoomFactor = 0.8;
+    if (event.deltaY < 0) {
+        camera.position.z -= zoomFactor;
+    } else {
+        camera.position.z += zoomFactor;
+    }
+}
+
+document.addEventListener('wheel', onDocumentMouseWheel, false);
+
 // Variable to store materials
 const originalMaterials = [];
 
@@ -155,21 +167,56 @@ function animate() {
     window.addEventListener('resize', onWindowResize);
 }
 
+// Define different materials
+const materials = [
+    new THREE.MeshStandardMaterial({ color: 0x004a75, metalness: 1, roughness: .5, transparent: false, opacity: .9 }),
+    new THREE.MeshStandardMaterial({
+        color: 0xb2b2b2, // 11743794 in hex
+        roughness: 0.62,
+        metalness: 0.78,
+        emissive: 0x000000,
+        emissiveIntensity: 0,
+        envMapIntensity: 1,
+        vertexColors: true,
+        transparent: true,
+        wireframe: true
+    }),
+    new THREE.MeshStandardMaterial({
+        color: 0xaeaeae, // 11431474 in hex
+        roughness: 0.68,
+        metalness: 1,
+        emissive: 0x000000,
+        emissiveIntensity: 0,
+        envMapIntensity: 1,
+        side: THREE.DoubleSide,
+        opacity: 0.52,
+        transparent: true,
+        forceSinglePass: true
+    }),
+    new THREE.MeshNormalMaterial(), // Environment mapping set to normals
+    new THREE.MeshStandardMaterial({
+        color: 0x004a75, // Deep blue color
+        metalness: 0.8, // Metallic appearance
+        roughness: 0.3, // Glossy surface
+        transparent: true, // Enable transparency
+        opacity: 0.7, // Slight transparency
+        wireframe: false // Ensure wireframe is off by default
+    })
+];
+
 // Wireframe toggle functionality
-let isWireframeEnabled = false;
+let materialIndex = 0;
 const wireframeToggleButton = document.getElementById('wireframe-toggle');
 
 wireframeToggleButton.addEventListener('click', () => {
-    isWireframeEnabled = !isWireframeEnabled;
+    materialIndex = (materialIndex + 1) % materials.length;
 
     scene.traverse((object) => {
         if (object.isMesh) {
-            if (object.material) {
-                object.material.wireframe = isWireframeEnabled; // Toggle wireframe
-            }
+            object.material = materials[materialIndex];
         }
     });
 
-    // Update button color to reflect the state
-    wireframeToggleButton.style.backgroundColor = isWireframeEnabled;
+    // Keep the button color "orange"
+    wireframeToggleButton.style.backgroundColor = 'orange';
 });
