@@ -1,98 +1,151 @@
 <!DOCTYPE html>
 <html>
-  
-  
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
-  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Programmable Cake Mold</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <div class="container">
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-      <div class="text-section">
-          <h2>Programmable Cake Mold</h2>
-          <h3>2019</h3>
-          <p class="spaced-paragraph">A collaboration with the <a href="https://www.amitzoran.com/about-9" target="_blank" rel="noopener noreferrer" class="primary-link">Hybrid Lab</a> lead by Amit Zoran.
-            This project continue the exploration of the lab around <a href="https://www.amitzoran.com/post/digital-gastronomy" target="_blank" rel="noopener noreferrer" class="primary-link">digital gastronomy</a> by trying to create 
-            a programmable cake mold which gives the chef an ability to accurately control the senses of the user.</p>
-      </div>
-
-      <div class="image-section">
-        <img src="./programmle mold cake/cake_mold_1.jpg">
-    </div>
-  </div>
-  
-  <div class="container">
-
-      <div class="text-section">
-        <h1>How does it work?</h1>
-        <p>The mold contains voxels that can be manipulated using a robotic arm. The chef decides what flavors the user should experience and how they should be blended, and the robotic arm pushes the voxels to the desired position.</p>
-      </div>
-
-      <div class="image-section">
-        <img src="./programmle mold cake/cake_mold_2.jpg">
-        <img src="./programmle mold cake/cake_mold_robot_2.jpg" >
-    </div>
-  </div>
-
-
-  <div class="container">
-
-    <div class="text-section">
-      <h1>Final Output</h1>
-      <p>The final result shown here exhibits a layered, voxel-like structure with a grid pattern.</p>
-    </div>
-
-    <div class="image-section">
-      <img src="./programmle mold cake/cake_mold_4.jpg" alt="Image 2">
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
   </div>
 </div>
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  <script src="loader.js"></script>
-  </main>
-  <footer>
-    <p>&copy; 2024 My Website. All rights reserved.</p>
-  </footer>
-  <div class="cursor small"></div>
+<main data-screen-label="Cake Mold" style="max-width: 1200px; margin: 0 auto; padding: 40px 60px 120px; font-family: 'Raleway', sans-serif;">
 
-  
+  <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 44px;" style-hover="color: var(--text);">← Projects</a>
 
+  <div style="margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border);">
+    <div style="font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">2019</div>
+    <h1 style="font-size: 62px; font-weight: 200; color: var(--text); margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1;">Programmable Cake Mold</h1>
+    <div style="font-size: 11px; color: var(--muted); letter-spacing: 0.07em;">Digital Gastronomy · Robotics · Fabrication</div>
+  </div>
 
+  <!-- Intro -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">A collaboration with the <a href="https://www.amitzoran.com/about-9" target="_blank" style="color: var(--accent); border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px;" style-hover="border-color: var(--accent);">Hybrid Lab</a>, led by Amit Zoran. Continuing the lab's exploration of <a href="https://www.amitzoran.com/post/digital-gastronomy" target="_blank" style="color: var(--accent); border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px;" style-hover="border-color: var(--accent);">digital gastronomy</a>, the project builds a programmable cake mold that gives the chef precise control over the diner's sensory experience.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/cake_cover.jpg" style="width: 100%;" alt="Programmable cake mold"/>
+    </div>
+  </div>
 
-  <!--<div class="overlay"></div>-->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
-  
- 
+  <!-- How it works -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">How it works</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The mold is made of voxels manipulated by a robotic arm. The chef decides which flavors the diner should experience and how they blend; the arm pushes each voxel to its target position to compose the structure.</p>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
+      <img src="assets/cake_how1.jpg" style="width: 100%;" alt="Voxel mold"/>
+      <img src="assets/cake_how2.jpg" style="width: 100%;" alt="Robotic arm"/>
+    </div>
+  </div>
 
-  
+  <!-- Final Output -->
+  <div style="display: flex; gap: 80px; margin-bottom: 88px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Final Output</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The result is a layered, voxel-like structure with a distinct grid pattern, the cake as a programmable, edible matrix of flavor.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/cake_final.jpg" style="width: 100%;" alt="Final output"/>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid var(--border); padding-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="Marionettist.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">← Marionettist</a>
+    <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">All Projects →</a>
+  </div>
+
+</main>
+
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'IMG' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+</script>
 </body>
-
-
 </html>

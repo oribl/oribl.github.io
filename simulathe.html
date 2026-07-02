@@ -1,77 +1,130 @@
 <!DOCTYPE html>
 <html>
-  
-  
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
-  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CADmanship</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <div class="container">
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-      <div class="text-section">
-          <h2>simulathe</h2>
-          <h3>2022</h3>
-          <p class="spaced-paragraph">SimuLathe is a subproject of <a href="https://www.imperial.ac.uk/virse/" target="_blank" rel="noopener noreferrer" class="primary-link">ViRSE</a> - Virtual Reality for Student Education. 
-            Our goal was to create a mechanical lathe simulation for mechanical engineering students, 
-            providing them with an engaging onboarding experience to prepare them for their first real-life interaction with a lathe.</p>
-            
-            <p >To achieve this, I used the ViRSE framework in Unity, designed the interactions, 
-                and built the entire <a href="https://www.imperial.ac.uk/virse/building-virse-worlds/" target="_blank" rel="noopener noreferrer" class="primary-link">ViRSE enviorment</a> by creating a 3D model of the lathe and the interaction flow. Working closely with workshop technicians, 
-                I gained an understanding of the challenges students face and recorded the technician working on the machine to 
-                capture valuable insights that informed our design decisions.</p>
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
+  </div>
+</div>
+
+<main data-screen-label="Simulathe" style="max-width: 1200px; margin: 0 auto; padding: 40px 60px 120px; font-family: 'Raleway', sans-serif;">
+
+  <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 44px;" style-hover="color: var(--text);">← Projects</a>
+
+  <div style="margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border);">
+    <div style="font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">2022</div>
+    <h1 style="font-size: 62px; font-weight: 200; color: var(--text); margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1;">Simulathe</h1>
+    <div style="font-size: 11px; color: var(--muted); letter-spacing: 0.07em;">VR · Simulation · Education</div>
+  </div>
+
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">SimuLathe is a subproject of <a href="https://www.imperial.ac.uk/virse/" target="_blank" style="color: var(--accent); border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px;" style-hover="border-color: var(--accent);">ViRSE</a>, Virtual Reality for Student Education. The goal: a mechanical lathe simulation for mechanical engineering students, giving them an engaging onboarding experience before their first real-life encounter with a lathe.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">I used the ViRSE framework in Unity, designed the interactions, and built the entire <a href="https://www.imperial.ac.uk/virse/building-virse-worlds/" target="_blank" style="color: var(--accent); border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px;" style-hover="border-color: var(--accent);">environment</a>, modeling the lathe in 3D and defining the interaction flow. Working closely with workshop technicians, I recorded them operating the machine to capture insights that shaped the design.</p>
+    </div>
+    <div style="flex: 1;">
+      <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: var(--hairline);">
+        <iframe src="https://www.youtube.com/embed/uBUtWo9Msgg" title="SimuLathe" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-
-      <div class="image-section">
-        <iframe class="responsive-video" width="560" height="315" src="https://www.youtube.com/embed/uBUtWo9Msgg?si=4DdBbtLkj0racR8F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </div>
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  <script src="loader.js"></script>
-  </main>
-  <footer>
-    <p>&copy; 2024 My Website. All rights reserved.</p>
-  </footer>
-  <div class="cursor small"></div>
+  <div style="border-top: 1px solid var(--border); padding-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">← All Projects</a>
+    <a href="CarveRL.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">carveRL →</a>
+  </div>
 
-  
+</main>
 
-
-
-  <!--<div class="overlay"></div>-->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
-  
- 
-
-  
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'IMG' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+</script>
 </body>
-
-
 </html>

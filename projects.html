@@ -1,76 +1,217 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ori Blich</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <table>
-      <tr>
-        <td><a href="index.html" data-imageUrl="./dither_pipette_pixel1.png" class="hoverable">🚧Pipette🚧</a></td>
-      </tr>
-      <tr>
-        <td><a href="https://www.carboncell.co" data-imageUrl="./dither_carbon cell.jpg" target="_blank" rel="noopener noreferrer"  class="hoverable">Carbon Cell</a></td>
-      </tr>
-      <tr>
-        <td><a href="simulathe.html" data-imageUrl="./dither_Simulathe.gif" class="hoverable">Simulathe</a></td>
-      </tr>
-      <tr>
-        <td><a href="CarveRL.html" data-imageUrl="./dither_carveRL_cover_projects.png" class="hoverable">carveRL</a></td>
-      </tr>
-      <tr>
-        <td><a href="CADmanship.html" data-imageUrl="./dither_Cadmanship.png" class="hoverable">CADmanship</a></td>
-      </tr>
-      <tr>
-        <td><a href="obscura.html" data-imageUrl="./dither_Gizmo_orange.png" class="hoverable">Obscura</a></td>
-      </tr>
-      <tr>
-        <td><a href="squiB.html" data-imageUrl="./dither_squib.jpg" class="hoverable">Squib</a></td>
-      </tr>
-      <tr>
-        <td><a href="Marionettist.html" data-imageUrl="./dither_Marionettist.jpg" class="hoverable">Marionettist</a></td>
-      </tr>
-      <tr>
-        <td><a href="cake mold.html" data-imageUrl="./dither_Programmable Cake Mold.png" class="hoverable">Programmable Cake Mold</a></td>
-      </tr>
-      <tr>
-        <td><a href="#" data-imageUrl="./dither_Data Tree.gif" class="hoverable">🚧Data Tree🚧</a></td>
-      </tr>
-      <tr>
-        <td><a href="#" data-imageUrl="./dither_stul.png" class="hoverable">🚧STuL🚧</a></td>
-      </tr>
-      <tr>
-        <td><a href="#" data-imageUrl="./dither_lungs.gif" class="hoverable">🚧Organs Visualization🚧</a></td>
-      </tr>
-    </table>
-    <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  </main>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    button { cursor: none; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-  <footer>
-    <p>&copy; 2025 My Website. All rights reserved.</p>
-  </footer>
+<!-- NAV -->
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
+  </div>
+</div>
 
-  <div class="cursor small"></div>
-  <div class="image-overlay"></div>
+<!-- PROJECT LIST -->
+<main style="max-width: 1200px; margin: 0 auto; padding: 44px 60px 100px; font-family: 'Raleway', sans-serif;">
 
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <span style="font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted);">Project</span>
+    <span style="font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Discipline</span>
+  </div>
+
+  <div data-proj-img="assets/dither_carbon.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="https://www.carboncell.co" target="_blank" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">Carbon Cell</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">material</span>
+  </div>
+
+  <div data-proj-img="assets/dither_simulathe.gif" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="simulathe.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">Simulathe</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">simulation</span>
+  </div>
+
+  <div data-proj-img="assets/dither_carverl.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="CarveRL.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">carveRL</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">RL · robotics</span>
+  </div>
+
+  <div data-proj-img="assets/dither_cadmanship.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="CADmanship.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">CADmanship</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">education</span>
+  </div>
+
+  <div data-proj-img="assets/dither_obscura.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="obscura.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">Obscura</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">CV · hardware</span>
+  </div>
+
+  <div data-proj-img="assets/dither_marionettist.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="Marionettist.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">Marionettist</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">robotics</span>
+  </div>
+
+  <div data-proj-img="assets/dither_cake.webp" style="display: flex; align-items: center; border-bottom: 1px solid var(--border);">
+    <a href="cake mold.html" style="font-size: 38px; font-weight: 200; color: var(--text); flex: 1; padding: 10px 0; line-height: 1; transition: color 0.12s; display: block;" style-hover="color: var(--accent);">Cake Mold</a>
+    <span style="font-size: 10px; color: var(--muted); flex-shrink: 0;">fabrication</span>
+  </div>
+
+  <!-- WIP -->
+  <div style="display: flex; align-items: center; border-bottom: 1px solid var(--hairline);">
+    <span style="font-size: 38px; font-weight: 200; color: var(--wip); flex: 1; padding: 10px 0; line-height: 1;">Pipette</span>
+    <span style="font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wip2); flex-shrink: 0;">soon</span>
+  </div>
+
+  <div style="display: flex; align-items: center; border-bottom: 1px solid var(--hairline);">
+    <span style="font-size: 38px; font-weight: 200; color: var(--wip); flex: 1; padding: 10px 0; line-height: 1;">STuL</span>
+    <span style="font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wip2); flex-shrink: 0;">soon</span>
+  </div>
+
+</main>
+
+<!-- Image overlay: small box that trails the cursor (set via JS), never centered over the list -->
+<div id="proj-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; opacity: 0; transition: opacity 0.18s ease;">
+  <div id="proj-overlay-box" style="position: absolute; left: 0; top: 0; width: 500px; height: 410px; will-change: transform;">
+    <img class="proj-overlay-layer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.18s ease;" alt=""/>
+    <img class="proj-overlay-layer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.18s ease;" alt=""/>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    this._mx = window.innerWidth / 2;
+    this._my = window.innerHeight / 2;
+    const overlay = document.getElementById('proj-overlay');
+    const box = document.getElementById('proj-overlay-box');
+    const placeBox = () => {
+      if (!box) return;
+      const bw = box.offsetWidth, bh = box.offsetHeight;
+      let x = this._mx + 32;                 // sit to the right of the pointer (the names are to its left)
+      if (x + bw > window.innerWidth - 16) x = this._mx - bw - 32; // flip left only when it would clip the edge
+      if (x < 16) x = 16;
+      let y = this._my - bh / 2;             // vertically centered on the pointer
+      y = Math.max(16, Math.min(y, window.innerHeight - bh - 16));
+      box.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    };
+    if (cursor) {
+      this._onMove = (e) => {
+        this._mx = e.clientX; this._my = e.clientY;
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+        if (overlay && overlay.style.opacity === '1') placeBox();
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+
+    const layers = overlay ? overlay.querySelectorAll('.proj-overlay-layer') : [];
+    // Only run the hover preview on devices that actually hover (skip phones/tablets,
+    // where there's no pointer and a tap would just flash the image over the list).
+    const canHover = !window.matchMedia || window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (canHover && overlay && box && layers.length === 2) {
+      let front = 0; // index of the currently-shown layer
+      this._cache = {};
+      document.querySelectorAll('[data-proj-img]').forEach(row => {
+        const src = row.getAttribute('data-proj-img');
+        // Eagerly preload + decode lightweight stills; skip heavy animated GIFs (load on hover).
+        if (src && !this._cache[src] && !/\.gif($|\?)/i.test(src)) {
+          const img = new Image();
+          img.src = src;
+          this._cache[src] = img;
+          if (img.decode) img.decode().catch(() => {});
+        }
+        row.addEventListener('mouseenter', () => {
+          if (!src) return;
+          const next = 1 - front;
+          const show = layers[next], hide = layers[front];
+          const reveal = () => { show.style.opacity = '1'; hide.style.opacity = '0'; front = next; };
+          if (show.getAttribute('src') !== src) show.src = src;
+          // Stills are preloaded+decoded; reveal immediately and let the CSS opacity transition fade it in.
+          reveal();
+          placeBox();
+          overlay.style.opacity = '1';
+        });
+        row.addEventListener('mouseleave', () => { overlay.style.opacity = '0'; });
+      });
+    }
+
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() { return {}; }
+}
+</script>
 </body>
 </html>

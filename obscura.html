@@ -1,169 +1,215 @@
 <!DOCTYPE html>
 <html>
-  
-  
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
-  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>obscura</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <div class="container">
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-      <div class="text-section">
-          <h2>obscura</h2>
-          <h3>2022</h3>
-          <p>A collaboration with Eden Harrison - Gizmo course Imperial College - Royal College of Arts.</p>
-          <p>This project explores the awkwardness that is the result of direct eye contact in public transportation. We developed glasses that detect the surrounding gaze direction and help the user to avoid direct eye contact.
-            You can find a short clip <a href="https://youtu.be/ROJh54tEHyk?si=3ku94KEo8U9OrUlm" target="_blank" rel="noopener noreferrer" class="primary-link">here</a>.</p>
-        </p>
-      </div>
-
-      <div class="image-section">
-        <img src="./obscura/232597854_12b426be01_o.png">
-        <img src="./obscura/Picture1-light.gif">
-    </div>
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
   </div>
-  
-  <div class="container">
-
-      <div class="text-section">
-        <h1>parts:</h1>
-        <p class="spaced-paragraph">A. Switch: If on, the wings (D) will activate when someone’s gaze is directed at the camera (F) (in addition to the vibration motors (B) being active), avoiding the risk of eye contact. If off, only the vibration motors are active.</p>
-        <p class="spaced-paragraph">B. Vibration motors and clip: the clip holds the vibration motors in place.</p>
-        <p class="spaced-paragraph">C. Wings: these descend to prevent eye contact.</p>
-        <p class="spaced-paragraph">D. Servo motor: rotates to activate shades.</p>
-        <p class="spaced-paragraph">E. Camera. Sends a visual feed to the raspberry pi, for gaze detection.</p>
-        <p class="spaced-paragraph">F. Photoresistor. This feeds the light level back to the Arduino, and from there to the raspberry pi, in order to set the correct threshold for iris detection.</p>
-        <p class="spaced-paragraph">G. PCB board. This routes all voltage, ground, and signal cables to the arduino, for more efficient connections.</p>
-        <p class="spaced-paragraph">H. Arduino. This controls the shades/vibration motors in response to received commands from the raspberry pi. </p>
-    </div>
-      <div class="image-section">
-        <img src="./obscura/blue print-01.png " class="clickable-image">
-        
-    </div>
-  </div>
-
-  <div class="container">
-  <div class="text-section">
-    <h1>design intent and function</h1>
-    <p>Function A:</p>
-        <p class="spaced-paragraph">If the perpetrator is located on the left-hand  or right-hand side of the frame, the vibrating motor will buzz on the left or right, alerting the wearer to the attempt to make eye contact.
-        The wearer may now use this information as they wish, to either avoid or engage with eye contact.</p>
-        </div>
-    <div class="image-section">
-        <img src="./obscura/Picture2.jpg" alt="Image 2" >
-        <p>function A</p>
-    </div>
 </div>
-<div class="container">
-    <div class="text-section">
-          <p>Function B:</p>
-          If the perpetrator is located on the middle of the frame — and the ‘hide’ function of the glasses is engaged (accessed via the switch, see page 3) — the wings descend, obscuring direct eye contact from being made. The wings will lift after a pre-determined period of time (4 s).
-  If the ‘hide’ function is not engaged, then nothing will happen.</p>
-          </div>
-      <div class="image-section">
-          <img src="./obscura/Picture3.jpg" alt="Image 2">
-          <p>function B</p>
-      </div>
+
+<main data-screen-label="Obscura" style="max-width: 1200px; margin: 0 auto; padding: 40px 60px 120px; font-family: 'Raleway', sans-serif;">
+
+  <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 44px;" style-hover="color: var(--text);">← Projects</a>
+
+  <div style="margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border);">
+    <div style="font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">2022</div>
+    <h1 style="font-size: 62px; font-weight: 200; color: var(--text); margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1;">Obscura</h1>
+    <div style="font-size: 11px; color: var(--muted); letter-spacing: 0.07em;">Computer Vision · Wearables · Hardware</div>
   </div>
 
-<div class="container">
-    <div class="text-section">
-      <h1>functionality</h1>
-    <p>face detection:</p>
-
-      <p class="spaced-paragraph">  A pre-trained face detector is used to locate each face in the frame. The detector locates 68 landmarks to describe each face.</p>
+  <!-- Intro -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">A collaboration with Eden Harrison for the Gizmo course, Imperial College & Royal College of Art.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">Obscura explores the awkwardness produced by direct eye contact in public transport. We built glasses that detect the surrounding gaze direction and help the wearer avoid unwanted eye contact. A short clip is <a href="https://youtu.be/ROJh54tEHyk" target="_blank" style="color: var(--accent); border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px;" style-hover="border-color: var(--accent);">here ↗</a>.</p>
     </div>
-      <div class="image-section">
-          <img src="./obscura/face_detection_light.gif" alt="Image 2">
-      </div>
-  </div>
-
-  <div class="container">
-    <div class="text-section">
-    <p>iris detection:</p>
-      <p class="spaced-paragraph">  For each face, the eyes are extracted by taking the relevant landmarks. The iris of each eye is detected by applying contour detection to the binary image of the eye (i.e., a gray scale image that has been converted to a binary image via thresholding). An ellipse is fitted to the contour of the iris to give the centre of the iris. The midpoint between each iris is calculated and a vector is drawn from a reference landmark (tip of the nose) to this midpoint for later use.</p>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
+      <img src="assets/obscura_cover.png" style="width: 100%;" alt="Obscura glasses"/>
+      <img src="assets/obscura_intro.gif" style="width: 100%;" alt="Obscura in use"/>
     </div>
-      <div class="image-section">
-          <img src="./obscura/iris_detection_light.gif" alt="Image 2">
-      </div>
   </div>
 
-  <div class="container">
-    <div class="text-section">
-    <p>head pose estimation:</p>
-      <p class="spaced-paragraph">  The head pose is estimated by mapping each of the 68 landmarks to the relevant 3D coordinates, taken from a 3D model of an average head. This allows the rotation and translation vector to be calculated via perspective n-point, i.e., using the camera image to estimate the position of a camera via a set of 3D coordinates, their reference 2D coordinates in the camera image, and a matrix of the camera’s intrinsic features.</p>
+  <!-- Parts -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 24px;">Parts</h2>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">A</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Switch: when on, the wings (C) activate alongside the vibration motors (B) when a gaze is directed at the camera (E). When off, only the motors run.</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">B</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Vibration motors and clip: the clip holds the motors in place.</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">C</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Wings: descend to prevent eye contact, driven by the servo (D).</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">E</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Camera: sends a visual feed to the Raspberry Pi for gaze detection.</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">F</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Photoresistor: feeds light level to the Arduino and Pi to set the iris-detection threshold.</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">G</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">PCB: routes voltage, ground and signal to the Arduino for cleaner connections.</span></div>
+        <div style="display: flex; gap: 12px; font-family: 'Merriweather', serif;"><span style="font-weight: 400; color: var(--accent); flex: 0 0 16px; font-family: 'Raleway', sans-serif; font-size: 13px;">H</span><span style="font-size: 14px; font-weight: 300; color: var(--body); line-height: 1.75;">Arduino: drives the shades and motors in response to commands from the Pi.</span></div>
+      </div>
     </div>
-      <div class="image-section">
-          <img src="./obscura/head_pose_estimation_light.gif" alt="Image 2">
-      </div>
+    <div style="flex: 1;">
+      <img src="assets/obscura_blueprint.png" style="width: 100%;" alt="Obscura blueprint"/>
+    </div>
   </div>
 
-  <div class="container">
-    <div class="text-section">
-      <h1>pipeline</h1>
-      <p>machine learning:</p>
-          <p class="spaced-paragraph">The iris midpoint vector, head rotation vector, and head translation vector are collected into a single vector, and used to classify the gaze as either directed toward camera’ or ‘not directed toward camera’ via SVM.</p>
-          <pclass="spaced-paragraph">SVM:</p>
-        <p class="spaced-paragraph">  An SVM training method creates a model that classifies samples based on training data that has been labelled as belonging to one of two categories (‘looking at the camera’ and ‘not looking at the camera’). SVM maps the training data to points in space to maximize the width of the gap between the two categories. New examples are then mapped into that same space and predicted to belong to a category, based on which side of the gap they fall. A training data set of captured images was created and analyzed
-        to extract the features, which were then used to train the SVM classifier. The classifier was exported as a ‘pickled’ object (i.e., a stream of bytes); this can then be run in the main block of code, and used to classify every face captured in real-time by the raspberry pi camera.</p>
-        <p >architecture:</p>
-        Output from raspberry pi travels to Arduino via serial communication.
-        Arduino receives commands from the raspberry pi and conducts a corresponding action.</p>
-
-          </div>
-      <div class="image-section">
-          <img src="./obscura/Architecture.png" class="clickable-image">
-          <img src="./obscura/IMG_9105.jpg" alt="Image 2">
-      </div>
+  <!-- Function A -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Function A: Alert</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">When the perpetrator is on the left or right of the frame, the corresponding vibration motor buzzes, alerting the wearer to the attempt at eye contact. They can then decide to avoid or engage as they wish.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/obscura_funcA.jpg" style="width: 100%;" alt="Function A"/>
+      <div style="font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 10px;">Function A</div>
+    </div>
   </div>
-    
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  <script src="loader.js"></script>
-  </main>
-  <footer>
-    <p>&copy; 2024 My Website. All rights reserved.</p>
-  </footer>
-  <div class="cursor small"></div>
+  <!-- Function B -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Function B: Hide</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">When the perpetrator is centered in the frame and the 'hide' function is engaged, the wings descend to obscure direct eye contact, lifting again after four seconds. With 'hide' disengaged, nothing happens.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/obscura_funcB.jpg" style="width: 100%;" alt="Function B"/>
+      <div style="font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 10px;">Function B</div>
+    </div>
+  </div>
 
-  
+  <!-- Computer Vision Pipeline -->
+  <div style="margin-bottom: 36px;">
+    <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0;">Computer Vision Pipeline</h2>
+  </div>
 
+  <div style="display: flex; gap: 80px; margin-bottom: 56px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <div style="font-size: 12px; letter-spacing: 0.05em; color: var(--text); margin-bottom: 12px;">Face detection</div>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">A pre-trained face detector locates each face in the frame, mapping 68 landmarks to describe it.</p>
+    </div>
+    <div style="flex: 1;"><img src="assets/obscura_face.gif" style="width: 100%;" alt="Face detection"/></div>
+  </div>
 
+  <div style="display: flex; gap: 80px; margin-bottom: 56px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <div style="font-size: 12px; letter-spacing: 0.05em; color: var(--text); margin-bottom: 12px;">Iris detection</div>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">For each face, the eyes are extracted from the landmarks. Contour detection on the thresholded eye image finds the iris; an ellipse is fitted to locate its center. The midpoint between irises is referenced from the nose tip.</p>
+    </div>
+    <div style="flex: 1;"><img src="assets/obscura_iris.gif" style="width: 100%;" alt="Iris detection"/></div>
+  </div>
 
-  <!--<div class="overlay"></div>-->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
-  
- 
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <div style="font-size: 12px; letter-spacing: 0.05em; color: var(--text); margin-bottom: 12px;">Head pose estimation</div>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The 68 landmarks are mapped to 3D coordinates from an average head model. Perspective-n-point then yields the rotation and translation vectors using the camera's intrinsics.</p>
+    </div>
+    <div style="flex: 1;"><img src="assets/obscura_headpose.gif" style="width: 100%;" alt="Head pose estimation"/></div>
+  </div>
 
-  
+  <!-- Architecture -->
+  <div style="display: flex; gap: 80px; margin-bottom: 88px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Classification & Architecture</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 16px; font-family: 'Merriweather', serif;">The iris-midpoint, head-rotation and head-translation vectors are combined and classified as 'directed toward camera' or 'not' via an SVM, trained on a labelled set of captured images and exported as a pickled model that runs live on the Pi.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">Output travels from the Raspberry Pi to the Arduino over serial; the Arduino executes the corresponding action on the shades and motors.</p>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 14px;">
+      <img src="assets/obscura_architecture.png" style="width: 100%;" alt="System architecture"/>
+      <img src="assets/obscura_build.jpg" style="width: 100%;" alt="Build"/>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid var(--border); padding-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="CADmanship.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">← CADmanship</a>
+    <a href="Marionettist.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">Marionettist →</a>
+  </div>
+
+</main>
+
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'IMG' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+</script>
 </body>
-
-
 </html>

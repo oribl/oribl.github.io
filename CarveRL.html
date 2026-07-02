@@ -1,121 +1,178 @@
 <!DOCTYPE html>
 <html>
-  
-  
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  
-  
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>carveRL</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <div class="container">
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-      <div class="text-section">
-          <h2>carveRL</h2>
-          <h3>2023</h3>
-          <p>Serendipity - the chance of making positive discoveries is much greater in a craftsperson's environment compared to an industrial fabrication setting. However, with the integration of digital fabrication, especially computer-controlled machines in mass production and local artisanal production, we are losing the value of serendipity.</p>
-          <br>  
-          <p>This project explores the potential of integrating machine learning into the fabrication process to enhance serendipity. Instead of explicitly instructing the machine on where, when, and how to move (tool path), we teach it how to operate within a given environment. By doing so, the machine avoids repeating the exact path and gains the ability to make those fortuitous mistakes that can lead to positive discoveries.</p>
-            <br>
-            <p>As a case study, I have chosen to focus on pottery, specifically the creation of patterns on clay objects. Drawing inspiration from Wedgwood Potter's lathe and Mishima (a pattern carving technique), CarveRL is a tool that has learned how to carve clay objects and produce various patterns. When working with CarveRL, makers can not only create different patterns but also embrace the potential for serendipity.</p>
-            <br>
-            <p>CarveRL was developed using reinforcement learning, a technique that enables an agent to learn sequential decision-making through environment interaction.</p>
-      </div>
-
-      <div class="image-section">
-        <img src="./carveRL/carveRL_cover.png" alt="Image 1">
-    </div>
-  </div>
-  
-  <div class="container">
-      <div class="text-section">
-        <h1>Ver 1</h1>
-        <p>As an initial stage of the project, I started by training a linear actuator to follow a specific pattern. In this video, you can observe a successfully trained agent avoiding the cylinder and the white balls while also making contact with the black ones. Simultaneously, the physical twin, connected to the digital twin, replicated the movements in the physical space.</p>
-      </div>
-
-      <div class="image-section">
-        <img src="./carveRL/carveRL_ver1_sync.gif" class="clickable-image">
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="text-section">
-      <h1>Ver 2</h1>
-      <p>The two-axis carving tool is utilized within a learning environment, employing the reinforcement learning method in the Unity3D ML agents environment. Multiple tools are being trained to avoid collisions with cylinders and white balls, while attempting to make contact with red balls. This approach enables the tool to learn the task without being confined to a specific tool path. Once the agent has acquired proficiency in the task, the creator can modify the ball arrangement according to the desired pattern.</p>
-    </div>
-
-    <div class="image-section">
-      <img src="./carveRL/carveRL_ver2.png" >
-  </div>
-</div>
-  <div class="container">
-
-    <div class="text-section">
-      <h1>Collaboration with Yael</h1>
-      <p>Yael Rosenberg carving patterns in the clay sample – To test the tool's ability to collaborate with a ceramic artist, I had the honor of working with Yael Rosenberg. She created her own patterns by hand, and then programmed the machine to attempt to replicate similar ones. Throughout this process, serendipity occurred, and Yael discovered various pattern opportunities.
-      </p>
-    </div>
-
-    <div class="image-section">
-      <img src="./carveRL/yael_carve.png" alt="Image 2">
-  </div>
-</div>
-<div class="container">
-
-  <div class="text-section">
-    <h1></h1>
-    <p>Some of the patterns that were created using the 2 axis tool</p>
-  </div>
-  <div class="image-section">
-    <img src="./carveRL/carveRL_results.gif" alt="Image 2">
+<!-- NAV -->
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
   </div>
 </div>
 
+<main style="max-width: 1200px; margin: 0 auto; padding: 40px 60px 120px; font-family: 'Raleway', sans-serif;">
 
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  <script src="loader.js"></script>
-  </main>
-  <footer>
-    <p>&copy; 2024 My Website. All rights reserved.</p>
-  </footer>
-  <div class="cursor small"></div>
+  <!-- Back -->
+  <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 44px;" style-hover="color: var(--text);">← Projects</a>
 
-  
+  <!-- Project header -->
+  <div style="margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border);">
+    <div style="font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">2023</div>
+    <h1 style="font-size: 62px; font-weight: 200; color: var(--text); margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1;">carveRL</h1>
+    <div style="font-size: 11px; color: var(--muted); letter-spacing: 0.07em;">Reinforcement Learning · Robotics · Fabrication</div>
+  </div>
 
+  <!-- Intro -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">Serendipity: the chance of making positive discoveries is much greater in a craftsperson's environment than in an industrial fabrication setting. But with the rise of digital fabrication, we are losing the value of those fortuitous mistakes.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">carveRL integrates machine learning into the fabrication process to bring serendipity back. Instead of programming a tool path, the machine is taught to operate within its environment, free to find those accidental discoveries that lead somewhere interesting.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The case study: pottery. Drawing from Wedgwood's lathe and the Mishima carving technique, carveRL is a tool trained to carve patterns into clay, and keep surprising its maker.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/carverl_cover.png" style="width: 100%;" alt="carveRL"/>
+    </div>
+  </div>
 
+  <!-- Ver 1 -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Ver 1</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">A linear actuator learns to follow a specific pattern. The agent avoids cylinders and white balls while making contact with the black ones, and its physical twin replicates each movement in real space simultaneously.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/carverl_ver1.gif" style="width: 100%;" alt="carveRL Ver 1"/>
+    </div>
+  </div>
 
-  <!--<div class="overlay"></div>-->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
-  
- 
+  <!-- Ver 2 -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Ver 2</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">A two-axis carving tool trained in Unity3D ML Agents. Multiple tools learn to avoid cylinders and white balls while seeking red ones, without any prescribed path. Once trained, rearranging the balls produces entirely different patterns.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/carverl_ver2.png" style="width: 100%;" alt="carveRL Ver 2"/>
+    </div>
+  </div>
 
-  
+  <!-- Collaboration with Yael -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Collaboration: Yael Rosenberg</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">To test the tool's ability to collaborate with a ceramic artist, Yael Rosenberg created patterns by hand, then programmed the machine to attempt similar ones. Throughout the process, serendipity occurred, and Yael discovered new directions she hadn't planned.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/carverl_yael.png" style="width: 100%;" alt="Collaboration with Yael"/>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div style="display: flex; gap: 80px; margin-bottom: 88px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Results</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">A selection of patterns produced using the two-axis carving tool.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/carverl_results.gif" style="width: 100%;" alt="carveRL Results"/>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div style="border-top: 1px solid var(--border); padding-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">← All Projects</a>
+    <a href="CADmanship.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">CADmanship →</a>
+  </div>
+
+</main>
+
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'IMG' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+</script>
 </body>
-
-
 </html>

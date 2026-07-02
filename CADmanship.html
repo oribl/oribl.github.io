@@ -1,151 +1,193 @@
 <!DOCTYPE html>
 <html>
-  
-  
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-   
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CADmanship</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon_1X1.png">
-
-  
-  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
-
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-      </ul>
-    </nav>
-  </header>
- 
-  <main>
-    <div class="container">
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
 
-      <div class="text-section">
-          <h2>CADmanship</h2>
-          <h3>2020</h3>
-          <p>The project explores the process of creating in the digital 3d space and presents a unique physical interface 
-            that enables intuitive sculpting of complex surfaces. CADmanship aims to be a tool that translates the mental intention and physical 
-            action of creators, designers, architects, artists, and craftsmen to the digital realm</p>
-      </div>
+<!-- NAV -->
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
+  </div>
+</div>
 
-      <div class="image-section">
-        <img src="./Cadmanship/Cadmanship.png" alt="Image 1">
+<main style="max-width: 1200px; margin: 0 auto; padding: 40px 60px 120px; font-family: 'Raleway', sans-serif;">
+
+  <!-- Back -->
+  <a href="projects.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 44px;" style-hover="color: var(--text);">← Projects</a>
+
+  <!-- Header -->
+  <div style="margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border);">
+    <div style="font-size: 11px; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">2020</div>
+    <h1 style="font-size: 62px; font-weight: 200; color: var(--text); margin: 0 0 16px; letter-spacing: -0.03em; line-height: 1;">CADmanship</h1>
+    <div style="font-size: 11px; color: var(--muted); letter-spacing: 0.07em;">HMI · Digital Fabrication · Tool Design</div>
+  </div>
+
+  <!-- Intro -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The project explores the process of creating in digital 3D space and presents a unique physical interface that enables intuitive sculpting of complex surfaces. CADmanship aims to translate the mental intention and physical action of creators (designers, architects, craftsmen) directly into the digital realm.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/cadmanship_cover.png" style="width: 100%;" alt="CADmanship"/>
     </div>
   </div>
-  
-  <div class="container">
 
-      <div class="text-section">
-        <h1>How does it work?</h1>
-        <p>There are 5 links controlling the curve, each connected to a potentiometer (4 in total). These links are attached to a linear potentiometer.</p>
-        <p>By adjusting the links, the curve alters its shape, and by sliding the control, the curve changes its distance from the center.</p>
-        <p>In the heart of the device lies a rotary encoder. Rotating it causes the curve to shift around the center.</p>
-        <p>With this tool, users can manipulate both the curve and its position. By pressing a button, users can "freeze" the curve in space, 
-          creating a loft surface between the curve and the subsequent one. After a few clicks, a complex 3D shape emerges.</p>
-      </div>
-
-      <div class="image-section">
-        <img src="./Cadmanship/prototype_A_small.gif" class="clickable-image">
+  <!-- How it works -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">How it works</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 16px; font-family: 'Merriweather', serif;">Five links control the curve, each connected to a potentiometer. A linear potentiometer on the control changes the curve's distance from center. A rotary encoder at the heart of the device rotates the curve around the center axis.</p>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">By pressing a button, users "freeze" the curve in space, creating a loft surface between successive curves. After a few clicks, a complex 3D shape emerges.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/cadmanship_proto_a.gif" style="width: 100%;" alt="Prototype A"/>
     </div>
   </div>
 
-  <div class="container">
-    <div class="text-section">
-      <h1>Durable Prototype</h1>
-      <p>While Prototype 1 performed adequately, its fragility was a concern. To ensure uninterrupted testing of the tool, I constructed a sturdier prototype.
-      
-      Around that time, I realized the importance of navigating within the 3D space with the tool.
-      
-      An additional button was incorporated, enabling a transition to navigation mode. In this mode, rotating the pivot causes the camera to orbit around the center, 
-      while sliding the control adjusts the camera's vertical tilt.</p>
+  <!-- Durable Prototype -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Durable Prototype</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">The first prototype was fragile. To allow uninterrupted testing, a sturdier version was built. Around this time I recognized the importance of navigating within 3D space: an additional button transitions to navigation mode, letting the camera orbit and tilt while the tool rests.</p>
     </div>
-
-    <div class="image-section">
-      <img src="./Cadmanship/Durable_prototype.gif" >
-  </div>
-</div>
-  <div class="container">
-
-    <div class="text-section">
-      <h1>Exploratory Phase</h1>
-      <p>During this phase, I experimented with using the tool to "sketch" chairs. Through this process, 
-        I grasped that the tool generates a distinct aesthetic language. Concurrently, I pondered the potential creative endeavors 
-        of other users with the tool.</p>
+    <div style="flex: 1;">
+      <img src="assets/cadmanship_durable.gif" style="width: 100%;" alt="Durable Prototype"/>
     </div>
-
-    <div class="image-section">
-      <img src="./Cadmanship/chair_render.png" alt="Image 2">
   </div>
-</div>
-<div class="container">
 
-  <div class="text-section">
-    <h1>Collaboration with Ella</h1>
-    <p>Ella Fischer Leventon, a student at the Glass and Ceramic Department at Bezalel Academy.</p>
-    <p>I invited Ella to integrate the tool into the glass blowing process.</p>
-    <p>Ella created two objects, which were 3D printed, used to make molds, and then used for glass blowing. The entire process is documented in this <a href="https://www.youtube.com/watch?v=ftq_VUujlr0&t=1s" target="_blank" rel="noopener noreferrer" class="primary-link">video</a>.</p>
+  <!-- Exploratory Phase -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Exploratory Phase</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0; font-family: 'Merriweather', serif;">Using the tool to sketch chairs, I began to see that it generates a distinct aesthetic language. The curves it produces aren't things you'd easily draw by hand; they're artifacts of a particular kind of physical input. I started wondering what other makers might find with it.</p>
+    </div>
+    <div style="flex: 1;">
+      <img src="assets/cadmanship_chair.png" style="width: 100%;" alt="Chair explorations"/>
+    </div>
   </div>
-  <div class="image-section">
-    <img src="./Cadmanship/Ella_1.jpg" alt="Image 2">
-    <img src="./Cadmanship/Ella_3.jpg" alt="Image 2">
+
+  <!-- Ella -->
+  <div style="display: flex; gap: 80px; margin-bottom: 80px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Collaboration: Ella Fischer Leventon</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">Glass and Ceramics student at Bezalel Academy. Ella integrated the tool into the glass blowing process, creating two objects, 3D-printing them, casting molds, and blowing glass from them.</p>
+      <a href="https://www.youtube.com/watch?v=ftq_VUujlr0&t=1s" target="_blank" style="font-size: 12px; color: var(--accent); letter-spacing: 0.05em; border-bottom: 1px solid var(--accent-soft); padding-bottom: 2px;" style-hover="border-color: var(--accent);">Watch the process ↗</a>
+    </div>
+    <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <img src="assets/cadmanship_ella1.jpg" style="width: 100%; object-fit: cover; aspect-ratio: 3/4;" alt="Ella collaboration 1"/>
+      <img src="assets/cadmanship_ella3.jpg" style="width: 100%; object-fit: cover; aspect-ratio: 3/4;" alt="Ella collaboration 2"/>
+    </div>
   </div>
-</div>
 
-<div class="container">
-<div class="text-section">
-  <h1>Collaboration with Shalom</h1>
-  <p>Shalom Schwartz, responsible for the industrial design department workshops at Bezalel Academy.</p>
-  <p>Shalom and I pondered the potential applications of this tool in the craftsmanship process. 
-    We decided to test its capabilities by creating a mushroom.</p>
-  <p>In this process, Shalom crafted the mushroom base through woodturning, while utilizing the tool to design the head. 
-    The head was then CNC milled using a robotic arm. The entire process is showcased in this
-     <a href="https://www.youtube.com/watch?v=QNQahIXrs8M" target="_blank" rel="noopener noreferrer" class="primary-link">video</a>.</p>
-  
-</div>
-
-  <div class="image-section">
-    <img src="./Cadmanship/Shalom_1.jpg" alt="Image 2">
-    <img src="./Cadmanship/shalom_2.png" alt="Image 2">
-    <img src="./Cadmanship/Shalom_3.jpg" alt="Image 2">
+  <!-- Shalom -->
+  <div style="display: flex; gap: 80px; margin-bottom: 88px; align-items: flex-start;">
+    <div style="flex: 0 0 42%;">
+      <h2 style="font-size: 13px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); margin: 0 0 16px;">Collaboration: Shalom Schwartz</h2>
+      <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 20px; font-family: 'Merriweather', serif;">Head of workshops at Bezalel's Industrial Design department. Together we tested the tool by creating a mushroom: Shalom turned the base by woodturning while the head was designed with CADmanship and CNC milled using a robotic arm.</p>
+      <a href="https://www.youtube.com/watch?v=QNQahIXrs8M" target="_blank" style="font-size: 12px; color: var(--accent); letter-spacing: 0.05em; border-bottom: 1px solid var(--accent-soft); padding-bottom: 2px;" style-hover="border-color: var(--accent);">Watch the process ↗</a>
+    </div>
+    <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <img src="assets/cadmanship_shalom1.jpg" style="width: 100%; object-fit: cover; aspect-ratio: 1;" alt="Shalom 1"/>
+      <img src="assets/cadmanship_shalom2.png" style="width: 100%; object-fit: cover; aspect-ratio: 1;" alt="Shalom 2"/>
+      <img src="assets/cadmanship_shalom3.jpg" style="width: 100%; object-fit: cover; aspect-ratio: 1; grid-column: 1 / -1;" alt="Shalom 3"/>
+    </div>
   </div>
-</div>
-  <!-- Scroll to Top Button -->
-  <button id="scrollToTopBtn" class="scroll-to-top"></button>
-  <script src="loader.js"></script>
-  </main>
-  <footer>
-    <p>&copy; 2024 My Website. All rights reserved.</p>
-  </footer>
-  <div class="cursor small"></div>
 
-  
+  <!-- Bottom nav -->
+  <div style="border-top: 1px solid var(--border); padding-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+    <a href="CarveRL.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">← carveRL</a>
+    <a href="obscura.html" style="font-size: 11px; color: var(--muted); letter-spacing: 0.1em;" style-hover="color: var(--text);">Obscura →</a>
+  </div>
 
+</main>
 
-
-  <!--<div class="overlay"></div>-->
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="CenterImage.js"></script>
-  
- 
-
-  
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'A' || el.tagName === 'IMG' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+  renderVals() { return {}; }
+}
+</script>
 </body>
-
-
 </html>

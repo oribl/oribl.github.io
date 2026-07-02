@@ -1,38 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ori Blich</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap">
-    <link rel="icon" type="image/png" href="./favicon_1X1.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-           <!--<li><a href="projects.html">Projects</a></li> -->
-        </ul>
-    </nav>
-</header>
-<div id="model-container">
-    <button class="round-button" id="wireframe-toggle"></button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="3dmodel.js"></script>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <script src="./theme.js"></script>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --body: #555;
+      --sub: #888;
+      --muted: #bbb;
+      --wip: #ddd;
+      --wip2: #e0e0e0;
+      --border: #ebebeb;
+      --hairline: #f5f5f5;
+      --accent: #f97316;
+      --accent-soft: rgba(249,115,22,0.3);
+      --accent-cursor: rgba(249,115,22,0.65);
+      --cursor: rgba(0,0,0,0.48);
+    }
+    [data-theme="dark"] {
+      --bg: #141312;
+      --text: #ececea;
+      --body: #a6a39e;
+      --sub: #97948f;
+      --muted: #6e6b67;
+      --wip: #46443f;
+      --wip2: #39372f;
+      --border: #2b2926;
+      --hairline: #1e1c1a;
+      --accent: #4ade80;
+      --accent-soft: rgba(74,222,128,0.38);
+      --accent-cursor: rgba(74,222,128,0.7);
+      --cursor: rgba(255,255,255,0.55);
+    }
+    body { transition: background-color 0.3s ease; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); cursor: none; }
+    a { cursor: none; }
+    button { cursor: none; }
+    @media (max-width: 760px) {
+      #site-nav > div { gap: 16px !important; }
+      [style*="padding: 0 60px"] { padding-left: 22px !important; padding-right: 22px !important; }
+      main { padding-left: 22px !important; padding-right: 22px !important; }
+      main > div[style*="gap: 80px"] { flex-direction: column !important; gap: 24px !important; }
+      main > div[style*="gap: 80px"] > div { flex: 1 1 auto !important; width: 100% !important; }
+      h1 { font-size: 40px !important; line-height: 1.06 !important; }
+    }
+  </style>
+</helmet>
+
+<!-- NAV -->
+<div id="site-nav" style="position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 60px; display: flex; gap: 28px; align-items: center; height: 56px; font-family: 'Raleway', sans-serif;">
+    <a href="index.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none;">Home</a>
+    <a href="projects.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none;">Projects</a>
+    <a href="about.html" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; border-bottom: 1.5px solid var(--text); padding-bottom: 2px;">About</a>
+    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left: auto; background: none; border: none; padding: 6px 0; display: inline-flex; align-items: center; cursor: none; font-family: 'Raleway', sans-serif;">
+      <span id="theme-label" style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); transition: color 0.15s;" style-hover="color: var(--accent);">Dark</span>
+    </button>
+  </div>
 </div>
 
-<div id="text-container">
-    <!-- Text content goes here -->
-    <h1>Hi! I'm Ori Blich - a design engineer / creative technologist who specializes in human-machine interactions. 
-        Currently, I'm working on utilizing sustainable materials and creating VR educational tools.
-    </h1>
-</div>
-<div class="cursor small"></div>
-<script src="main.js"></script>
+<!-- MAIN -->
+<main style="max-width: 1200px; margin: 0 auto; padding: 64px 60px 120px; font-family: 'Raleway', sans-serif;">
+
+  <!-- Bio -->
+  <div style="max-width: 620px; margin-bottom: 88px;">
+    <div style="font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;">About</div>
+    <h1 style="font-size: 54px; font-weight: 200; color: var(--text); line-height: 1.08; margin: 0 0 30px; letter-spacing: -0.025em;">Hi, I'm<br>Ori Blich.</h1>
+    <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 18px; font-family: 'Merriweather', serif;">
+      I'm a design engineer and creative technologist living in the overlap between physical tools and digital systems, the space where things feel good to touch, move in interesting ways, or teach something unexpected.
+    </p>
+    <p style="font-size: 15px; font-weight: 300; color: var(--body); line-height: 1.9; margin: 0 0 36px; font-family: 'Merriweather', serif;">
+      Currently exploring sustainable materials and building VR educational tools. Previously studied at Bezalel Academy of Arts and Design, Jerusalem.
+    </p>
+    <a href="mailto:oriblich@gmail.com" style="font-size: 12px; color: var(--accent); letter-spacing: 0.06em; font-weight: 400; text-decoration: none; border-bottom: 1px solid var(--accent-soft); padding-bottom: 2px;">oriblich@gmail.com</a>
+  </div>
+
+  <!-- Live Heartbeat -->
+  <div style="border-top: 1px solid var(--border); padding-top: 52px; max-width: 800px;">
+    <div style="font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">Live Heartbeat</div>
+    <p style="font-size: 12px; font-style: italic; font-family: 'Merriweather', serif; color: var(--sub); margin: 0 0 20px; max-width: 460px; line-height: 1.6;">If you notice a spike and it makes you wonder if I'm okay, go ahead and email, it'd make my day.</p>
+
+    <!-- ECG canvas -->
+    <div style="background: var(--hairline); border-radius: 3px; overflow: hidden; margin-bottom: 18px;">
+      <canvas id="ecg-canvas" style="width: 100%; height: 80px; display: block;"></canvas>
+    </div>
+
+    <!-- BPM row -->
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+      <span style="font-size: 28px; font-weight: 200; color: var(--text); letter-spacing: -0.02em; line-height: 1; min-width: 100px;">{{ bpmDisplay }}</span>
+      <sc-if value="{{ lastUpdated }}" hint-placeholder-val="{{ false }}">
+        <span style="font-size: 11px; color: var(--muted); letter-spacing: 0.04em;">updated {{ lastUpdated }}</span>
+      </sc-if>
+      <sc-if value="{{ connected }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ disconnect }}" style="font-size: 11px; color: var(--muted); letter-spacing: 0.04em; background: none; border: none; padding: 0; font-family: 'Raleway', sans-serif;" style-hover="color: var(--text); text-decoration: underline;">disconnect</button>
+      </sc-if>
+      <sc-if value="{{ showConnect }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ connect }}" style="font-size: 11px; color: var(--accent); letter-spacing: 0.06em; background: none; border: none; padding: 0; font-family: 'Raleway', sans-serif; font-weight: 400;" style-hover="opacity: 0.7;">Connect Fitbit →</button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ setupNote }}" hint-placeholder-val="{{ false }}">
+      <p style="font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.7; max-width: 460px;">To enable live heart rate: create a Personal app at <a href="https://dev.fitbit.com" target="_blank" style="color: var(--muted); text-decoration: underline; text-underline-offset: 2px;">dev.fitbit.com</a>, set this page as the callback URL, then paste your Client ID into about.html.</p>
+    </sc-if>
+  </div>
+
+</main>
+
+<!-- CURSOR -->
+<div id="cursor-dot" style="position: fixed; left: -100px; top: -100px; width: 28px; height: 28px; border-radius: 50%; background: var(--cursor); pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: background 0.15s ease;"></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// ═══════════════════════════════════════════════════════════
+// Fitbit Configuration
+// 1. Go to dev.fitbit.com → Register an App (Personal type)
+// 2. Set OAuth Callback URL to this page's full URL
+// 3. Paste your Client ID below
+const FITBIT_CLIENT_ID = ''; // ← Your Client ID here
+// ═══════════════════════════════════════════════════════════
+
+class Component extends DCLogic {
+  state = { bpm: null, connected: false, lastUpdated: null };
+
+  componentDidMount() {
+    const cursor = document.getElementById('cursor-dot');
+    if (cursor) {
+      this._onMove = (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hot = el && (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'BUTTON' || el.closest('a') || el.closest('button') || el.closest('button'));
+        cursor.style.background = hot ? 'var(--accent-cursor)' : 'var(--cursor)';
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
+    this._onScroll = () => {
+      const nav = document.getElementById('site-nav');
+      if (nav) nav.style.borderColor = window.scrollY > 10 ? 'var(--border)' : 'transparent';
+    };
+    window.addEventListener('scroll', this._onScroll);
+
+    this._startECG();
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code) {
+      history.replaceState({}, '', window.location.pathname);
+      this._exchangeCode(code);
+    } else {
+      this._tryAutoConnect();
+    }
+
+    this._poll = setInterval(() => { if (this.state.connected) this._fetchBPM(); }, 60000);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+    cancelAnimationFrame(this._ecgRaf);
+    clearInterval(this._poll);
+  }
+
+  _startECG() {
+    const canvas = document.getElementById('ecg-canvas');
+    if (!canvas) return;
+    let offset = 0, lastT = null;
+
+    const draw = (t) => {
+      if (!lastT) lastT = t;
+      const dt = Math.min(t - lastT, 50);
+      lastT = t;
+      const W = canvas.offsetWidth || 600;
+      const H = canvas.offsetHeight || 80;
+      if (canvas.width !== W) canvas.width = W;
+      if (canvas.height !== H) canvas.height = H;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+      const mid = H / 2;
+      const bpm = this.state.bpm;
+
+      if (bpm) {
+        const beatW = W * 0.44;
+        offset += (beatW * (bpm / 60) / 1000) * dt;
+        if (offset > beatW) offset -= beatW;
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#f97316';
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        const n = Math.ceil(W / beatW) + 2;
+        let first = true;
+        for (let i = -1; i < n; i++) {
+          const x = i * beatW - offset;
+          const b = beatW;
+          const pts = [
+            [x, mid], [x+b*0.22, mid],
+            [x+b*0.26, mid-H*0.1], [x+b*0.30, mid],
+            [x+b*0.37, mid],
+            [x+b*0.40, mid+H*0.14],
+            [x+b*0.44, mid-H*0.48],
+            [x+b*0.48, mid+H*0.14],
+            [x+b*0.53, mid],
+            [x+b*0.59, mid],
+            [x+b*0.65, mid-H*0.19],
+            [x+b*0.75, mid],
+            [x+b, mid],
+          ];
+          pts.forEach(([px, py]) => {
+            if (first) { ctx.moveTo(px, py); first = false; }
+            else ctx.lineTo(px, py);
+          });
+        }
+        ctx.stroke();
+      } else {
+        ctx.strokeStyle = 'rgba(180,180,180,0.45)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([5, 10]);
+        ctx.beginPath();
+        ctx.moveTo(0, mid);
+        ctx.lineTo(W, mid);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      this._ecgRaf = requestAnimationFrame(draw);
+    };
+    this._ecgRaf = requestAnimationFrame(draw);
+  }
+
+  async _tryAutoConnect() {
+    const token = localStorage.getItem('fitbit_token');
+    const exp = Number(localStorage.getItem('fitbit_expires'));
+    if (!token) return;
+    if (Date.now() > exp - 60000) { await this._refresh(); }
+    else { this.setState({ connected: true }); this._fetchBPM(); }
+  }
+
+  async _exchangeCode(code) {
+    if (!FITBIT_CLIENT_ID) return;
+    const verifier = localStorage.getItem('fitbit_verifier');
+    const redirectUri = window.location.origin + window.location.pathname;
+    try {
+      const res = await fetch('https://api.fitbit.com/oauth2/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ client_id: FITBIT_CLIENT_ID, grant_type: 'authorization_code', code, code_verifier: verifier, redirect_uri: redirectUri }),
+      });
+      const d = await res.json();
+      if (d.access_token) {
+        localStorage.setItem('fitbit_token', d.access_token);
+        localStorage.setItem('fitbit_refresh', d.refresh_token);
+        localStorage.setItem('fitbit_expires', Date.now() + d.expires_in * 1000);
+        this.setState({ connected: true });
+        this._fetchBPM();
+      }
+    } catch(e) { console.warn('Fitbit auth:', e); }
+  }
+
+  async _refresh() {
+    const refresh = localStorage.getItem('fitbit_refresh');
+    if (!refresh || !FITBIT_CLIENT_ID) return;
+    try {
+      const res = await fetch('https://api.fitbit.com/oauth2/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ client_id: FITBIT_CLIENT_ID, grant_type: 'refresh_token', refresh_token: refresh }),
+      });
+      const d = await res.json();
+      if (d.access_token) {
+        localStorage.setItem('fitbit_token', d.access_token);
+        localStorage.setItem('fitbit_refresh', d.refresh_token);
+        localStorage.setItem('fitbit_expires', Date.now() + d.expires_in * 1000);
+        this.setState({ connected: true });
+        this._fetchBPM();
+      } else {
+        localStorage.removeItem('fitbit_token');
+        localStorage.removeItem('fitbit_refresh');
+      }
+    } catch(e) { console.warn('Fitbit refresh:', e); }
+  }
+
+  async _fetchBPM() {
+    const token = localStorage.getItem('fitbit_token');
+    if (!token) return;
+    try {
+      const res = await fetch('https://api.fitbit.com/1/user/-/activities/heart/date/today/1d/1sec.json', {
+        headers: { Authorization: 'Bearer ' + token },
+      });
+      if (res.status === 401) { await this._refresh(); return; }
+      const d = await res.json();
+      const ds = d?.['activities-heart-intraday']?.dataset || [];
+      if (ds.length) this.setState({ bpm: ds[ds.length - 1].value, lastUpdated: new Date() });
+    } catch(e) { console.warn('BPM fetch:', e); }
+  }
+
+  async _connectFitbit() {
+    if (!FITBIT_CLIENT_ID) { alert('Add your Fitbit Client ID to about.html to connect.'); return; }
+    const verifier = this._randStr(32);
+    const challenge = await this._s256(verifier);
+    localStorage.setItem('fitbit_verifier', verifier);
+    const p = new URLSearchParams({
+      client_id: FITBIT_CLIENT_ID, response_type: 'code',
+      code_challenge: challenge, code_challenge_method: 'S256',
+      scope: 'heartrate', redirect_uri: window.location.origin + window.location.pathname,
+    });
+    window.location.href = 'https://www.fitbit.com/oauth2/authorize?' + p;
+  }
+
+  _disconnectFitbit() {
+    ['fitbit_token','fitbit_refresh','fitbit_expires','fitbit_verifier'].forEach(k => localStorage.removeItem(k));
+    this.setState({ connected: false, bpm: null, lastUpdated: null });
+  }
+
+  _randStr(n) {
+    const a = new Uint8Array(n);
+    crypto.getRandomValues(a);
+    return btoa(String.fromCharCode(...a)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  }
+
+  async _s256(s) {
+    const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+    return btoa(String.fromCharCode(...new Uint8Array(d))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+  }
+
+  _fmtTime(date) {
+    const s = Math.floor((Date.now() - date) / 1000);
+    if (s < 60) return s + 's ago';
+    if (s < 3600) return Math.floor(s / 60) + 'min ago';
+    return date.toLocaleTimeString();
+  }
+
+  renderVals() {
+    return {
+      bpmDisplay: this.state.bpm ? this.state.bpm + ' BPM' : 'N/A',
+      lastUpdated: this.state.lastUpdated ? this._fmtTime(this.state.lastUpdated) : null,
+      connected: this.state.connected,
+      showConnect: !this.state.connected,
+      setupNote: !FITBIT_CLIENT_ID,
+      connect: () => this._connectFitbit(),
+      disconnect: () => this._disconnectFitbit(),
+    };
+  }
+}
+</script>
 </body>
 </html>
