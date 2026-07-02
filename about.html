@@ -108,10 +108,6 @@
         <button onClick="{{ connect }}" style="font-size: 11px; color: var(--accent); letter-spacing: 0.06em; background: none; border: none; padding: 0; font-family: 'Raleway', sans-serif; font-weight: 400;" style-hover="opacity: 0.7;">Connect Fitbit →</button>
       </sc-if>
     </div>
-
-    <sc-if value="{{ setupNote }}" hint-placeholder-val="{{ false }}">
-      <p style="font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.7; max-width: 460px;">To enable live heart rate: create a Personal app at <a href="https://dev.fitbit.com" target="_blank" style="color: var(--muted); text-decoration: underline; text-underline-offset: 2px;">dev.fitbit.com</a>, set this page as the callback URL, then paste your Client ID into about.html.</p>
-    </sc-if>
   </div>
 
 </main>
@@ -344,7 +340,6 @@ class Component extends DCLogic {
       lastUpdated: this.state.lastUpdated ? this._fmtTime(this.state.lastUpdated) : null,
       connected: this.state.connected,
       showConnect: !this.state.connected,
-      setupNote: !FITBIT_CLIENT_ID,
       connect: () => this._connectFitbit(),
       disconnect: () => this._disconnectFitbit(),
     };
